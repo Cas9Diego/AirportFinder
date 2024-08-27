@@ -38,6 +38,7 @@ class SliderScreenViewController: UIViewController, SliderScreenViewProtocol {
     
 }
 
+//Mark - Getting user coordinates
 extension SliderScreenViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
@@ -46,6 +47,9 @@ extension SliderScreenViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
-        print("Error getting location", error.localizedDescription)
+        let alert = UIAlertController(title: "Alerta", message: "No pudimos recueprar tu ubicación", preferredStyle: .alert)
+        let acceptAction = UIAlertAction(title: "Algo falló", style: .default)
+        alert.addAction(acceptAction)
+        self.present(alert, animated: true)
     }
 }
