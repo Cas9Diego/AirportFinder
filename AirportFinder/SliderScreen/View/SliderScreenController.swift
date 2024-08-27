@@ -47,8 +47,8 @@ extension SliderScreenViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
-        let alert = UIAlertController(title: "Alerta", message: "No pudimos recueprar tu ubicación", preferredStyle: .alert)
-        let acceptAction = UIAlertAction(title: "Algo falló", style: .default)
+        let alert = UIAlertController(title: "Algo falló", message: "No pudimos recueprar tu ubicación", preferredStyle: .alert)
+        let acceptAction = UIAlertAction(title: "Aceptar", style: .default)
         alert.addAction(acceptAction)
         self.present(alert, animated: true)
     }

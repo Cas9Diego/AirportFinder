@@ -15,7 +15,7 @@ protocol SliderScreenRouterProtocol: AnyObject {
 
 protocol SliderScreenViewProtocol: UIViewController {
     var presenter: SliderScreenPresenterProtocol? {get set}
-
+    var locationManager: CLLocationManager { get }
 }
 
 protocol SliderScreenPresenterProtocol: AnyObject {
