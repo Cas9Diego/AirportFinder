@@ -6,24 +6,26 @@
 //
 
 import UIKit
+import CoreLocation
 
-class TabBarViewController: UITabBarController {
-
+class TabBarViewController: UITabBarController, AirportsMapViewProtocol {
+    
+    var presenter: AirportsMapPresenterProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setMapAreaCoverage(withLocation location: CurrentLocation) {
+        if var mapViewController = self.viewControllers?.first as? MapViewProtocol {
+            mapViewController.location = location
+        }
     }
-    */
 
+}
+
+extension TabBarViewController: CLLocationManagerDelegate {
+    
 }

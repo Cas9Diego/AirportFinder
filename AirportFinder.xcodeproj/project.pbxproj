@@ -21,6 +21,13 @@
 		6C338B862C7D7A7D00E182D2 /* AirportFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C338B852C7D7A7D00E182D2 /* AirportFinderTests.swift */; };
 		6C338B902C7D7A7D00E182D2 /* AirportFinderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C338B8F2C7D7A7D00E182D2 /* AirportFinderUITests.swift */; };
 		6C338B922C7D7A7D00E182D2 /* AirportFinderUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C338B912C7D7A7D00E182D2 /* AirportFinderUITestsLaunchTests.swift */; };
+		6C41F59E2C7DACAF004CC497 /* AirportsMapEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C41F58F2C7DACAF004CC497 /* AirportsMapEntity.swift */; };
+		6C41F59F2C7DACAF004CC497 /* AirportsMapInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C41F5912C7DACAF004CC497 /* AirportsMapInteractor.swift */; };
+		6C41F5A02C7DACAF004CC497 /* AirportsMapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C41F5932C7DACAF004CC497 /* AirportsMapPresenter.swift */; };
+		6C41F5A12C7DACAF004CC497 /* AirportsMapProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C41F5952C7DACAF004CC497 /* AirportsMapProtocols.swift */; };
+		6C41F5A22C7DACAF004CC497 /* AirportsMapRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C41F5972C7DACAF004CC497 /* AirportsMapRouter.swift */; };
+		6C41F5A42C7DACAF004CC497 /* AirportsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C41F59B2C7DACAF004CC497 /* AirportsMapViewController.swift */; };
+		6C41F5A62C7DAFFC004CC497 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C41F5A52C7DAFFC004CC497 /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +57,7 @@
 		6C338B6B2C7D7A7B00E182D2 /* AirportFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirportFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C338B6E2C7D7A7B00E182D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C338B702C7D7A7B00E182D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6C338B752C7D7A7B00E182D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SliderScreen.storyboard; sourceTree = "<group>"; };
+		6C338B752C7D7A7B00E182D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AirPortFinderViews.storyboard; sourceTree = "<group>"; };
 		6C338B772C7D7A7C00E182D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6C338B7A2C7D7A7C00E182D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6C338B7C2C7D7A7C00E182D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -59,6 +66,13 @@
 		6C338B8B2C7D7A7D00E182D2 /* AirportFinderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirportFinderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C338B8F2C7D7A7D00E182D2 /* AirportFinderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportFinderUITests.swift; sourceTree = "<group>"; };
 		6C338B912C7D7A7D00E182D2 /* AirportFinderUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportFinderUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		6C41F58F2C7DACAF004CC497 /* AirportsMapEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportsMapEntity.swift; sourceTree = "<group>"; };
+		6C41F5912C7DACAF004CC497 /* AirportsMapInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportsMapInteractor.swift; sourceTree = "<group>"; };
+		6C41F5932C7DACAF004CC497 /* AirportsMapPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportsMapPresenter.swift; sourceTree = "<group>"; };
+		6C41F5952C7DACAF004CC497 /* AirportsMapProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportsMapProtocols.swift; sourceTree = "<group>"; };
+		6C41F5972C7DACAF004CC497 /* AirportsMapRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportsMapRouter.swift; sourceTree = "<group>"; };
+		6C41F59B2C7DACAF004CC497 /* AirportsMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportsMapViewController.swift; sourceTree = "<group>"; };
+		6C41F5A52C7DAFFC004CC497 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +116,6 @@
 		6C2740422C7D8D0C000C3BEB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				6C338B742C7D7A7B00E182D2 /* SliderScreen.storyboard */,
 				6C2740482C7D8DE4000C3BEB /* SliderScreenController.swift */,
 			);
 			path = View;
@@ -174,6 +187,8 @@
 				6C338B6E2C7D7A7B00E182D2 /* AppDelegate.swift */,
 				6C338B702C7D7A7B00E182D2 /* SceneDelegate.swift */,
 				6C2740412C7D8D00000C3BEB /* SliderScreen */,
+				6C41F59D2C7DACAF004CC497 /* AirportsMapScreen */,
+				6C338B742C7D7A7B00E182D2 /* AirPortFinderViews.storyboard */,
 				6C338B772C7D7A7C00E182D2 /* Assets.xcassets */,
 				6C338B792C7D7A7C00E182D2 /* LaunchScreen.storyboard */,
 				6C338B7C2C7D7A7C00E182D2 /* Info.plist */,
@@ -196,6 +211,68 @@
 				6C338B912C7D7A7D00E182D2 /* AirportFinderUITestsLaunchTests.swift */,
 			);
 			path = AirportFinderUITests;
+			sourceTree = "<group>";
+		};
+		6C41F5902C7DACAF004CC497 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				6C41F58F2C7DACAF004CC497 /* AirportsMapEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		6C41F5922C7DACAF004CC497 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				6C41F5912C7DACAF004CC497 /* AirportsMapInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		6C41F5942C7DACAF004CC497 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				6C41F5932C7DACAF004CC497 /* AirportsMapPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		6C41F5962C7DACAF004CC497 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				6C41F5952C7DACAF004CC497 /* AirportsMapProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		6C41F5982C7DACAF004CC497 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				6C41F5972C7DACAF004CC497 /* AirportsMapRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		6C41F59C2C7DACAF004CC497 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6C41F5A52C7DAFFC004CC497 /* TabBarViewController.swift */,
+				6C41F59B2C7DACAF004CC497 /* AirportsMapViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6C41F59D2C7DACAF004CC497 /* AirportsMapScreen */ = {
+			isa = PBXGroup;
+			children = (
+				6C41F59C2C7DACAF004CC497 /* View */,
+				6C41F5922C7DACAF004CC497 /* Interactor */,
+				6C41F5942C7DACAF004CC497 /* Presenter */,
+				6C41F5902C7DACAF004CC497 /* Entity */,
+				6C41F5982C7DACAF004CC497 /* Router */,
+				6C41F5962C7DACAF004CC497 /* Protocols */,
+			);
+			path = AirportsMapScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,13 +406,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C41F5A02C7DACAF004CC497 /* AirportsMapPresenter.swift in Sources */,
 				6C2740582C7D8EE4000C3BEB /* SliderScreenProtocols.swift in Sources */,
+				6C41F5A42C7DACAF004CC497 /* AirportsMapViewController.swift in Sources */,
 				6C338B6F2C7D7A7B00E182D2 /* AppDelegate.swift in Sources */,
 				6C2740492C7D8DE4000C3BEB /* SliderScreenController.swift in Sources */,
+				6C41F59F2C7DACAF004CC497 /* AirportsMapInteractor.swift in Sources */,
 				6C27404B2C7D8DF3000C3BEB /* SliderScreenInteractor.swift in Sources */,
 				6C27404F2C7D8E03000C3BEB /* SliderScreenEntity.swift in Sources */,
 				6C338B712C7D7A7B00E182D2 /* SceneDelegate.swift in Sources */,
 				6C27404D2C7D8DFB000C3BEB /* SliderScreenPresenter.swift in Sources */,
+				6C41F5A22C7DACAF004CC497 /* AirportsMapRouter.swift in Sources */,
+				6C41F59E2C7DACAF004CC497 /* AirportsMapEntity.swift in Sources */,
+				6C41F5A12C7DACAF004CC497 /* AirportsMapProtocols.swift in Sources */,
+				6C41F5A62C7DAFFC004CC497 /* TabBarViewController.swift in Sources */,
 				6C2740512C7D8E0B000C3BEB /* SliderScreenRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,12 +457,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		6C338B742C7D7A7B00E182D2 /* SliderScreen.storyboard */ = {
+		6C338B742C7D7A7B00E182D2 /* AirPortFinderViews.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				6C338B752C7D7A7B00E182D2 /* Base */,
 			);
-			name = SliderScreen.storyboard;
+			name = AirPortFinderViews.storyboard;
 			sourceTree = "<group>";
 		};
 		6C338B792C7D7A7C00E182D2 /* LaunchScreen.storyboard */ = {
