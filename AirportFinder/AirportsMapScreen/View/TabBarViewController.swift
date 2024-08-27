@@ -21,6 +21,7 @@ class TabBarViewController: UITabBarController, AirportsMapViewProtocol {
     func setMapAreaCoverage(withLocation location: CurrentLocation) {
         if var mapViewController = self.viewControllers?.first as? MapViewProtocol {
             mapViewController.location = location
+            mapViewController.presenter = presenter
         }
     }
 

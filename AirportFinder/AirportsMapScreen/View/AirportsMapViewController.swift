@@ -20,6 +20,10 @@ class AirportsMapViewController: UIViewController, MapViewProtocol {
         setupMap()
         mapView.showsUserLocation = true
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        presenter?.consultAvailableAirPorts(location: location)
+    }
   
     func setupMap() {
         if let centerCoordinate = location?.center?.coordinate, let radius = location?.radius {

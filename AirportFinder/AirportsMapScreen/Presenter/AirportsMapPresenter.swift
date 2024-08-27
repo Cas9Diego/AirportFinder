@@ -17,6 +17,10 @@ class AirportsMapPresenter: AirportsMapPresenterProtocol {
         view?.setMapAreaCoverage(withLocation: withLocation)
     }
     
+    func consultAvailableAirPorts(location: CurrentLocation?) {
+        interactor?.consultAvailableAirPorts(location: location)
+    }
+    
 }
 
 extension AirportsMapPresenter: AirportsMapInteractorOutProtocol{

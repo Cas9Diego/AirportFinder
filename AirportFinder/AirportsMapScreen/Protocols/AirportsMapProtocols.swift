@@ -18,6 +18,7 @@ protocol AirportsMapViewProtocol: UIViewController {
 
 protocol MapViewProtocol {
     var location: CurrentLocation? {get set}
+    var presenter: AirportsMapPresenterProtocol? {get set}
 }
 
 protocol AirportsMapPresenterProtocol: AnyObject {
@@ -25,11 +26,13 @@ protocol AirportsMapPresenterProtocol: AnyObject {
     var view: AirportsMapViewProtocol? {get set}
     var interactor: AirportsMapInteractorInProtocol? {get set}
     func setMapAreaCoverage(withLocation: CurrentLocation)
+    func consultAvailableAirPorts(location: CurrentLocation?)
 
 }
 
 protocol AirportsMapInteractorInProtocol: AnyObject {
     var presenter: AirportsMapInteractorOutProtocol? {get set}
+    func consultAvailableAirPorts(location: CurrentLocation?)
 }
 
 protocol AirportsMapInteractorOutProtocol: AnyObject {
