@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import CoreLocation
 
 class SliderScreenViewController: UIViewController, SliderScreenViewProtocol {
 
     var presenter: SliderScreenPresenterProtocol?
+    let locationManager = CLLocationManager()
+    var latitude: CLLocationDegrees = 0.0
+    var longitude: CLLocationDegrees = 0.0
     
     @IBOutlet var slider: UISlider!
     
@@ -17,10 +21,31 @@ class SliderScreenViewController: UIViewController, SliderScreenViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationManager.delegate = self
+          locationManager.requestAlwaysAuthorization()
+          locationManager.startUpdatingLocation()
     }
     
     @IBAction func sliderValueDidChange(_ sender: UISlider) {
         radiusLabel.text = "\(Int(slider.value))"
     }
     
+    @IBAction func didPressSearchButton(_ sender: UIButton) {
+        locationManager.requestLocation()
+        presenter?.didPressSearchButton(withSearchRadius: Int(slider.value))
+    }
+    
+    
+}
+
+extension SliderScreenViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            presenter?.updateLocationValues(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, center: locations.last)
+       }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
+        print("Error getting location", error.localizedDescription)
+    }
 }

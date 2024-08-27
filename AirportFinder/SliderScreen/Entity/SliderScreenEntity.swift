@@ -6,7 +6,22 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct SliderScreenEntity: Codable {
 
+}
+
+struct CurrentLocation {
+    var latitude: CLLocationDistance
+    var longitude: CLLocationDistance
+    var center: CLLocation?
+    var radius: CLLocationDistance
+    
+    init(latitude: CLLocationDistance, longitude: CLLocationDistance, center: CLLocation?, radius: CLLocationDistance) {
+        self.latitude = latitude
+        self.longitude = longitude
+        self.center = center
+        self.radius = radius
+    }
 }

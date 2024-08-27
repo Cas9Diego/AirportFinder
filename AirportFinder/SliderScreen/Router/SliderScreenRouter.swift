@@ -14,7 +14,7 @@ import GSSAFunctionalUtilities
 class SliderScreenRouter: SliderScreenRouterProtocol {
     
     static func initModule() -> SliderScreenViewProtocol {
-        let initView: SliderScreenViewProtocol = SliderScreenViewController()
+        let initView: SliderScreenViewProtocol = UIStoryboard(name: "AirPortFinderViews", bundle: nil).instantiateViewController(withIdentifier: "InitialStoryBoard") as? SliderScreenViewController ?? SliderScreenViewController()
         let presenter: SliderScreenPresenterProtocol & SliderScreenInteractorOutProtocol = SliderScreenPresenter()
         let interactor: SliderScreenInteractorInProtocol = SliderScreenInteractor()
         let router: SliderScreenRouterProtocol = SliderScreenRouter()
@@ -26,6 +26,10 @@ class SliderScreenRouter: SliderScreenRouterProtocol {
         interactor.presenter = presenter
         
         return initView
+    }
+    
+    func initMapView(withLocationData: CurrentLocation, fromViewController: SliderScreenViewProtocol) {
+        fromViewController.navigationController?.pushViewController(AirportsMapRouter.initModule(currentLocationData: withLocationData), animated: true)
     }
 }
 
