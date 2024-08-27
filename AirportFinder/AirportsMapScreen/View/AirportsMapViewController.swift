@@ -18,6 +18,7 @@ class AirportsMapViewController: UIViewController, MapViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMap()
+        mapView.showsUserLocation = true
     }
   
     func setupMap() {
