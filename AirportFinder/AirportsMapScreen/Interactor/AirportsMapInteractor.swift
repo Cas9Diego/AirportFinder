@@ -17,14 +17,17 @@ class AirportsMapInteractor: AirportsMapInteractorInProtocol {
     ]
     
     func consultAvailableAirPorts(location: CurrentLocation?) {
-        var request = URLRequest(url: getURLWithCurrentlocation(location)!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
+        let url = getURLWithCurrentlocation(location)
+        guard let url = url else { return }
+        var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = apiHeaders
         
         let session = URLSession.shared
         session.dataTask(with: request as URLRequest, completionHandler: { [weak self] (data, response, error) -> Void in
-            if (error != nil) {
-                print(error?.localizedDescription as Any)
+            if let error = error {
+                print(error.localizedDescription)
+                self?.presenter?.showFailedServiceAlert()
             } else {
                 self?.decodeResponse(withData: data)
             }
@@ -38,11 +41,14 @@ class AirportsMapInteractor: AirportsMapInteractorInProtocol {
     }
     
     func decodeResponse(withData data: Data?) {
+        guard let data = data else {   presenter?.showFailedServiceAlert()
+            return}
         do {
-          let airPortsArray = try JSONDecoder().decode([AirportsMapEntity].self, from: data!)
+          let airPortsArray = try JSONDecoder().decode([AirportsMapEntity].self, from: data)
             setMapPins(withAirPorts: airPortsArray)
         } catch {
             print("ParsingError", error.localizedDescription)
+            presenter?.showFailedServiceAlert()
         }
     }
     

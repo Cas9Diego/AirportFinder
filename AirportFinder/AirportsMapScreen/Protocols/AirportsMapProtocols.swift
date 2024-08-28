@@ -12,15 +12,16 @@ protocol AirportsMapRouterProtocol: AnyObject {
     static func initModule(currentLocationData: CurrentLocation) -> UITabBarController
 }
 
-protocol TabBatViewProtocol: UIViewController {
+protocol TabBarViewProtocol: UIViewController {
     var presenter: AirportsPresenterProtocol? {get set}
     var listViewController: ListViewProtocol? {get set}
     func setMapAreaCoverage(withLocation location: CurrentLocation)
     func setAirportsListProperties(withInfo info: [MKPointAnnotation])
     func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation])
+    func showFailedServiceAlert() 
 }
 
-protocol MapViewProtocol {
+protocol MapViewProtocol: AnyObject {
     var location: CurrentLocation? {get set}
     var presenter: AirportsPresenterProtocol? {get set}
     func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation])
@@ -28,7 +29,7 @@ protocol MapViewProtocol {
 
 protocol AirportsPresenterProtocol: AnyObject {
     var router: AirportsMapRouterProtocol? {get set}
-    var view: TabBatViewProtocol? {get set}
+    var view: TabBarViewProtocol? {get set}
     var interactor: AirportsMapInteractorInProtocol? {get set}
     func setMapAreaCoverage(withLocation: CurrentLocation)
     func setAirportsListProperties(withInfo info: [MKPointAnnotation])
@@ -42,6 +43,7 @@ protocol AirportsMapInteractorInProtocol: AnyObject {
 
 protocol AirportsMapInteractorOutProtocol: AnyObject {
     func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation])
+    func showFailedServiceAlert() 
 }
 
 protocol ListViewProtocol: AnyObject {

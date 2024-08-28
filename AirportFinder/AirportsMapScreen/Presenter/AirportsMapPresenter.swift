@@ -33,4 +33,8 @@ extension AirportsMapPresenter: AirportsMapInteractorOutProtocol{
         view?.setAnnotationsOnMap(withAnnotations: annotations)
         setAirportsListProperties(withInfo: annotations)
     }
+    
+    func showFailedServiceAlert() {
+        
+    }
 }

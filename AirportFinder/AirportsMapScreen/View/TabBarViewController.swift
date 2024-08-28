@@ -9,11 +9,11 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class TabBarViewController: UITabBarController, TabBatViewProtocol {
+class TabBarViewController: UITabBarController, TabBarViewProtocol {
     
     var presenter: AirportsPresenterProtocol?
-    var mapViewController: MapViewProtocol?
-    var listViewController: ListViewProtocol?
+    weak var mapViewController: MapViewProtocol?
+    weak var listViewController: ListViewProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +44,13 @@ class TabBarViewController: UITabBarController, TabBatViewProtocol {
     
     func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation]) {
         mapViewController?.setAnnotationsOnMap(withAnnotations: annotations)
+    }
+    
+    func showFailedServiceAlert() {
+        let alert = UIAlertController(title: "Algo falló", message: "Ocurrió un error inesperado, vuelve a intentarlo", preferredStyle: .alert)
+        let acceptAction = UIAlertAction(title: "Aceptar", style: .default)
+        alert.addAction(acceptAction)
+        self.present(alert, animated: true)
     }
 }
 
