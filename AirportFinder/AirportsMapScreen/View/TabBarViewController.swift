@@ -40,6 +40,10 @@ class TabBarViewController: UITabBarController, TabBarViewProtocol {
         }
     }
     
+    func reloadTable() {
+        listViewController?.reloadTable()
+    }
+    
     func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation]) {
         mapViewController?.setAnnotationsOnMap(withAnnotations: annotations)
         presenter?.didFinishFetchingData()

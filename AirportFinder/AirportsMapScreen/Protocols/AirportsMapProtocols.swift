@@ -19,6 +19,7 @@ protocol TabBarViewProtocol: UIViewController {
     func setAirportsListProperties(withInfo info: [MKPointAnnotation])
     func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation])
     func showFailedServiceAlert() 
+    func reloadTable()
 }
 
 protocol MapViewProtocol: AnyObject {
@@ -48,10 +49,12 @@ protocol AirportsMapInteractorOutProtocol: AnyObject {
     func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation])
     func showFailedServiceAlert() 
     func didFinishFetchingWithData()
+    func reloadTable()
 }
 
 protocol ListViewProtocol: AnyObject {
     var annotationsInfo: [MKPointAnnotation] { get set }
     var presenter: AirportsPresenterProtocol?  { get set }
     var didfetchData: Bool  { get set }
+    func reloadTable()
 }

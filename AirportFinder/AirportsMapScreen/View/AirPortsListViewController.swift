@@ -53,4 +53,12 @@ class AirPortsListViewController: UIViewController, UITableViewDataSource, UITab
     func stopAnimating() {
         activityIndicator.stopAnimating()
     }
+    
+    func reloadTable() {
+        DispatchQueue.main.async {
+            if let table = self.tableView {
+                table.reloadData()
+            }
+        }
+    }
 }
