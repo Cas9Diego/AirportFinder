@@ -22,6 +22,7 @@ class AirportsMapRouter: AirportsMapRouterProtocol {
         presenter.interactor = interactor
         interactor.presenter = presenter
         presenter.setMapAreaCoverage(withLocation: currentLocationData)
+        interactor.consultAvailableAirPorts(location: currentLocationData)
         
         return initView
     }

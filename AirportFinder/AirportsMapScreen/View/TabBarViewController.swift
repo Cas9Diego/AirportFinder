@@ -18,7 +18,6 @@ class TabBarViewController: UITabBarController, TabBarViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter?.consultAvailableAirPorts(location: location)
     }
     
     func setMapAreaCoverage(withLocation location: CurrentLocation) {
