@@ -20,13 +20,11 @@ class TabBarViewController: UITabBarController, TabBarViewProtocol {
     }
     
     func setMapAreaCoverage(withLocation location: CurrentLocation) {
-        DispatchQueue.main.async {
             if let mapViewController = self.viewControllers?.first as? MapViewProtocol {
                 self.mapViewController = mapViewController
                 mapViewController.location = location
                 mapViewController.presenter = self.presenter
             }
-        }
     }
     
     func setAirportsListProperties(withInfo info: [MKPointAnnotation]) {
@@ -55,10 +53,14 @@ class TabBarViewController: UITabBarController, TabBarViewProtocol {
     }
     
     func showFailedServiceAlert() {
-        let alert = UIAlertController(title: K.strServiceAlertTittle, message: K.strServiceAlertMessage, preferredStyle: .alert)
-        let acceptAction = UIAlertAction(title: K.strAcceptAction, style: .default)
-        alert.addAction(acceptAction)
-        self.present(alert, animated: true)
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: K.strServiceAlertTittle, message: K.strServiceAlertMessage, preferredStyle: .alert)
+            let acceptAction = UIAlertAction(title: K.strAcceptAction, style: .default) { [weak self] _ in
+                self?.navigationController?.popViewController(animated: true)
+            }
+            alert.addAction(acceptAction)
+            self.present(alert, animated: true)
+        }
     }
 }
 

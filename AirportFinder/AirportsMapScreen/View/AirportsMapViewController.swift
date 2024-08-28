@@ -38,7 +38,6 @@ class AirportsMapViewController: UIViewController, MapViewProtocol, MKMapViewDel
     }
     
     func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation]) {
-        DispatchQueue.main.async {
         for pin in annotations {
             self.mapView.addAnnotation(pin)
         }
@@ -51,7 +50,6 @@ class AirportsMapViewController: UIViewController, MapViewProtocol, MKMapViewDel
                 self.didSetPins = true
                 self.presenter?.didFinishFetchingPins()
             }
-        }
     }
     
     private func setupActivityIndicator() {
@@ -67,9 +65,7 @@ class AirportsMapViewController: UIViewController, MapViewProtocol, MKMapViewDel
             let latitude = mapRegion.latitude
             let longitude = mapRegion.longitude
             let areaOnMap = CurrentLocation(latitude: latitude, longitude: longitude, center: CLLocation(latitude: latitude, longitude: longitude), radius: location?.radius ?? 0)
-            DispatchQueue.main.async {
                 self.presenter?.consultAdditionalAirports(location: areaOnMap)
-            }
         }
         mapView.userTrackingMode = .none
     }
