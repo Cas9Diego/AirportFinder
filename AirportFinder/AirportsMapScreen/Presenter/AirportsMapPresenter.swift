@@ -8,7 +8,7 @@
 import Foundation
 import MapKit
 
-class AirportsMapPresenter: AirportsMapPresenterProtocol {
+class AirportsMapPresenter: AirportsPresenterProtocol {
     
     weak var view: AirportsMapViewProtocol?
     var interactor: AirportsMapInteractorInProtocol?

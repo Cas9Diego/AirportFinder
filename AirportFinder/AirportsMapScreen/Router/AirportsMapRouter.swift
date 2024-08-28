@@ -11,7 +11,7 @@ class AirportsMapRouter: AirportsMapRouterProtocol {
     
     static func initModule(currentLocationData: CurrentLocation) -> UITabBarController {
         let initView = UIStoryboard(name: "AirPortFinderViews", bundle: nil).instantiateViewController(withIdentifier: "TabBarStoryBoard") as? TabBarViewController ?? TabBarViewController()
-        let presenter: AirportsMapPresenterProtocol & AirportsMapInteractorOutProtocol = AirportsMapPresenter()
+        let presenter: AirportsPresenterProtocol & AirportsMapInteractorOutProtocol = AirportsMapPresenter()
         let interactor: AirportsMapInteractorInProtocol = AirportsMapInteractor()
         let router: AirportsMapRouterProtocol = AirportsMapRouter()
         

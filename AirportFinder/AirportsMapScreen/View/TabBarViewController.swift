@@ -11,7 +11,7 @@ import MapKit
 
 class TabBarViewController: UITabBarController, AirportsMapViewProtocol {
     
-    var presenter: AirportsMapPresenterProtocol?
+    var presenter: AirportsPresenterProtocol?
     var mapViewController: MapViewProtocol?
     
     override func viewDidLoad() {

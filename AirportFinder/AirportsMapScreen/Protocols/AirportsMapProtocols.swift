@@ -13,18 +13,18 @@ protocol AirportsMapRouterProtocol: AnyObject {
 }
 
 protocol AirportsMapViewProtocol: UIViewController {
-    var presenter: AirportsMapPresenterProtocol? {get set}
+    var presenter: AirportsPresenterProtocol? {get set}
     func setMapAreaCoverage(withLocation location: CurrentLocation)
     func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation])
 }
 
 protocol MapViewProtocol {
     var location: CurrentLocation? {get set}
-    var presenter: AirportsMapPresenterProtocol? {get set}
+    var presenter: AirportsPresenterProtocol? {get set}
     func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation])
 }
 
-protocol AirportsMapPresenterProtocol: AnyObject {
+protocol AirportsPresenterProtocol: AnyObject {
     var router: AirportsMapRouterProtocol? {get set}
     var view: AirportsMapViewProtocol? {get set}
     var interactor: AirportsMapInteractorInProtocol? {get set}
