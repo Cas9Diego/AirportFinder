@@ -52,8 +52,8 @@ class SliderScreenPresenter: SliderScreenPresenterProtocol {
     }
     
     func sendToSettings() {
-        let alert = UIAlertController(title: "Algo falló", message: "Necesitamos acceso a tu ubicación", preferredStyle: .alert)
-        let acceptAction = UIAlertAction(title: "Aceptar", style: .default) {_ in
+        let alert = UIAlertController(title: V.strLocationAlertTittle, message: V.strRequestLocation, preferredStyle: .alert)
+        let acceptAction = UIAlertAction(title: V.strAcceptAction, style: .default) {_ in
             guard let settingsDirectory = URL(string: UIApplication.openSettingsURLString) else { return }
             if UIApplication.shared.canOpenURL(settingsDirectory) {
                 UIApplication.shared.open(settingsDirectory)

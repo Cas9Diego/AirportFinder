@@ -62,7 +62,7 @@ class AirportsMapViewController: UIViewController, MapViewProtocol, MKMapViewDel
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         currentMapInView = mapView
-        if presenter?.didFinishFetchingPins ?? true {
+        if presenter?.didFinishFetchingPinsBool ?? true {
             let mapRegion = mapView.centerCoordinate
             let latitude = mapRegion.latitude
             let longitude = mapRegion.longitude

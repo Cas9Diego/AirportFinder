@@ -10,7 +10,7 @@ import UIKit
 class SliderScreenRouter: SliderScreenRouterProtocol {
     
     static func initModule() -> SliderScreenViewProtocol {
-        let initView: SliderScreenViewProtocol = UIStoryboard(name: "AirPortFinderViews", bundle: nil).instantiateViewController(withIdentifier: "InitialStoryBoard") as? SliderScreenViewController ?? SliderScreenViewController()
+        let initView: SliderScreenViewProtocol = UIStoryboard(name: K.srtStoryBoardName, bundle: nil).instantiateViewController(withIdentifier: V.srtSliderStoryboardIdentifier) as? SliderScreenViewController ?? SliderScreenViewController()
         let presenter: SliderScreenPresenterProtocol & SliderScreenInteractorOutProtocol = SliderScreenPresenter()
         let interactor: SliderScreenInteractorInProtocol = SliderScreenInteractor()
         let router: SliderScreenRouterProtocol = SliderScreenRouter()

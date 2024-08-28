@@ -55,8 +55,8 @@ class TabBarViewController: UITabBarController, TabBarViewProtocol {
     }
     
     func showFailedServiceAlert() {
-        let alert = UIAlertController(title: "Algo falló", message: "Ocurrió un error inesperado, vuelve a intentarlo", preferredStyle: .alert)
-        let acceptAction = UIAlertAction(title: "Aceptar", style: .default)
+        let alert = UIAlertController(title: K.strServiceAlertTittle, message: K.strServiceAlertMessage, preferredStyle: .alert)
+        let acceptAction = UIAlertAction(title: K.strAcceptAction, style: .default)
         alert.addAction(acceptAction)
         self.present(alert, animated: true)
     }

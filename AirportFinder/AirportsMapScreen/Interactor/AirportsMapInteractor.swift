@@ -12,12 +12,12 @@ class AirportsMapInteractor: AirportsMapInteractorInProtocol {
 
     weak var presenter: AirportsMapInteractorOutProtocol?
     var apiHeaders =  [
-        "x-rapidapi-key": "f944eb3c64msh7a171e89b578ce6p110eb0jsn6747a28335c3",
-        "x-rapidapi-host": "aviation-reference-data.p.rapidapi.com"
+        "x-rapidapi-key": K.strApiKey,
+        "x-rapidapi-host": K.strApiHost
     ]
     
     func consultAvailableAirPorts(location: CurrentLocation?, isRetry: Bool) {
-        let url = getURLWithCurrentlocation(location, isRetry: isRetry)
+        let url = getURLWithCurrentlocation(location)
         guard let url = url else { return }
         var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
         request.httpMethod = "GET"
@@ -34,10 +34,11 @@ class AirportsMapInteractor: AirportsMapInteractorInProtocol {
         }).resume()
     }
     
-    func getURLWithCurrentlocation(_ location: CurrentLocation?, isRetry: Bool) -> URL? {
-        let radiosAdjust = isRetry ? 1: 1000
-        let url = URL(string: "https://aviation-reference-data.p.rapidapi.com/airports/search?lat=\(location?.latitude ?? 0.0)&lon=\(location?.longitude ?? 0.0)&radius=\(Int(location?.radius ?? 0)/1000)")
-        
+    func getURLWithCurrentlocation(_ location: CurrentLocation?) -> URL? {
+        var url: URL?
+        if let latitude = location?.latitude, let longitude = location?.longitude, let radius = location?.radius {
+            url = URL(string: "https://aviation-reference-data.p.rapidapi.com/airports/search?lat=\(latitude)&lon=\(longitude)&radius=\(Int(radius)/1000)")
+        }
         return url
     }
     
