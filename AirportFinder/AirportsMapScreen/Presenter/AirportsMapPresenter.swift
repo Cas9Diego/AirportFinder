@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 
 class AirportsMapPresenter: AirportsMapPresenterProtocol {
     
@@ -24,5 +25,8 @@ class AirportsMapPresenter: AirportsMapPresenterProtocol {
 }
 
 extension AirportsMapPresenter: AirportsMapInteractorOutProtocol{
-
+    
+    func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation]) {
+        view?.setAnnotationsOnMap(withAnnotations: annotations)
+    }
 }

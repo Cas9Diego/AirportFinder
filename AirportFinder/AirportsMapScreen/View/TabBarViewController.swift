@@ -7,10 +7,12 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 class TabBarViewController: UITabBarController, AirportsMapViewProtocol {
     
     var presenter: AirportsMapPresenterProtocol?
+    var mapViewController: MapViewProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,13 +22,15 @@ class TabBarViewController: UITabBarController, AirportsMapViewProtocol {
     
     func setMapAreaCoverage(withLocation location: CurrentLocation) {
         if var mapViewController = self.viewControllers?.first as? MapViewProtocol {
+            self.mapViewController = mapViewController
             mapViewController.location = location
             mapViewController.presenter = presenter
         }
     }
-
-}
-
-extension TabBarViewController: CLLocationManagerDelegate {
     
+    func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation]) {
+        mapViewController?.setAnnotationsOnMap(withAnnotations: annotations)
+    }
 }
+
+

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 protocol AirportsMapRouterProtocol: AnyObject {
     static func initModule(currentLocationData: CurrentLocation) -> UITabBarController
@@ -14,11 +15,13 @@ protocol AirportsMapRouterProtocol: AnyObject {
 protocol AirportsMapViewProtocol: UIViewController {
     var presenter: AirportsMapPresenterProtocol? {get set}
     func setMapAreaCoverage(withLocation location: CurrentLocation)
+    func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation])
 }
 
 protocol MapViewProtocol {
     var location: CurrentLocation? {get set}
     var presenter: AirportsMapPresenterProtocol? {get set}
+    func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation])
 }
 
 protocol AirportsMapPresenterProtocol: AnyObject {
@@ -36,5 +39,5 @@ protocol AirportsMapInteractorInProtocol: AnyObject {
 }
 
 protocol AirportsMapInteractorOutProtocol: AnyObject {
-
+    func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation])
 }

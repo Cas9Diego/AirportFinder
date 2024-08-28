@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 
 class AirportsMapInteractor: AirportsMapInteractorInProtocol {
 
@@ -21,7 +22,7 @@ class AirportsMapInteractor: AirportsMapInteractorInProtocol {
         request.allHTTPHeaderFields = apiHeaders
         
         let session = URLSession.shared
-        let dataTask: Void = session.dataTask(with: request as URLRequest, completionHandler: { [weak self] (data, response, error) -> Void in
+        session.dataTask(with: request as URLRequest, completionHandler: { [weak self] (data, response, error) -> Void in
             if (error != nil) {
                 print(error?.localizedDescription as Any)
             } else {
@@ -45,8 +46,14 @@ class AirportsMapInteractor: AirportsMapInteractorInProtocol {
         }
     }
     
-    func setMapPins(withAirPorts: [AirportsMapEntity] ) {
-        
+    func setMapPins(withAirPorts airportsArray: [AirportsMapEntity] ) {
+        var arrayOfAirPorts:[MKPointAnnotation] = []
+        for airport in airportsArray {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: airport.latitude ?? 0.0, longitude: airport.longitude ?? 0.0)
+            arrayOfAirPorts.append(annotation)
+        }
+        presenter?.setAnnotationsOnMap(withAnnotations: arrayOfAirPorts)
     }
 
 }

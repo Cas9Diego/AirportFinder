@@ -14,6 +14,7 @@ class SliderScreenViewController: UIViewController, SliderScreenViewProtocol {
     let locationManager = CLLocationManager()
     var latitude: CLLocationDegrees = 0.0
     var longitude: CLLocationDegrees = 0.0
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
     
     @IBOutlet var slider: UISlider!
     
@@ -51,5 +52,27 @@ extension SliderScreenViewController: CLLocationManagerDelegate {
         let acceptAction = UIAlertAction(title: "Aceptar", style: .default)
         alert.addAction(acceptAction)
         self.present(alert, animated: true)
+    }
+}
+
+extension SliderScreenViewController {
+    private func setupActivityIndicator() {
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicator)
+
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+
+    func showLoader() {
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
+    }
+
+    func hideLoader() {
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
     }
 }

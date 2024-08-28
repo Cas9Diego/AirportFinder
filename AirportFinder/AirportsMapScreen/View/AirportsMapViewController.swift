@@ -32,4 +32,10 @@ class AirportsMapViewController: UIViewController, MapViewProtocol {
         }
     }
     
+    func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation]) {
+        for pin in annotations {
+            mapView.addAnnotation(pin)
+        }
+    }
+    
 }
