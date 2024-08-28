@@ -20,7 +20,7 @@ class AirPortsListViewController: UIViewController, UITableViewDataSource, UITab
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: K.cellIdentifier)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: K.strCellIdentifier)
         setupActivityIndicator()
         activityIndicator.startAnimating()
     }
@@ -35,7 +35,7 @@ class AirPortsListViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.strCellIdentifier, for: indexPath)
         var content = cell.defaultContentConfiguration()
         content.text = annotationsInfo[indexPath.row].title
         content.secondaryText = annotationsInfo[indexPath.row].subtitle

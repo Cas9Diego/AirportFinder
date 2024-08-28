@@ -24,5 +24,5 @@ struct K {
     static let strAcceptAction = "Aceptar"
     static let strApiKey = "f944eb3c64msh7a171e89b578ce6p110eb0jsn6747a28335c3"
     static let strApiHost = "aviation-reference-data.p.rapidapi.com"
-    static let cellIdentifier = "Cell"
+    static let strCellIdentifier = "Cell"
 }
