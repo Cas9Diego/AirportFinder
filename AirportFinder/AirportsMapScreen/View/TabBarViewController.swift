@@ -14,7 +14,6 @@ class TabBarViewController: UITabBarController, TabBarViewProtocol {
     var presenter: AirportsPresenterProtocol?
     weak var mapViewController: MapViewProtocol?
     weak var listViewController: ListViewProtocol?
-    var location: CurrentLocation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
