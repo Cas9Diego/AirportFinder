@@ -13,6 +13,7 @@ class TabBarViewController: UITabBarController, AirportsMapViewProtocol {
     
     var presenter: AirportsPresenterProtocol?
     var mapViewController: MapViewProtocol?
+    var listViewController: ListViewProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +22,22 @@ class TabBarViewController: UITabBarController, AirportsMapViewProtocol {
     }
     
     func setMapAreaCoverage(withLocation location: CurrentLocation) {
-        if var mapViewController = self.viewControllers?.first as? MapViewProtocol {
-            self.mapViewController = mapViewController
-            mapViewController.location = location
-            mapViewController.presenter = presenter
+        DispatchQueue.main.async {
+            if var mapViewController = self.viewControllers?.first as? MapViewProtocol {
+                self.mapViewController = mapViewController
+                mapViewController.location = location
+                mapViewController.presenter = self.presenter
+            }
+        }
+    }
+    
+    func setAirportsListProperties(withInfo info: [MKPointAnnotation]) {
+        DispatchQueue.main.async {
+            if let listViewController = self.viewControllers?[1] as? ListViewProtocol {
+                self.listViewController = listViewController
+                listViewController.presenter = self.presenter
+                listViewController.annotationsInfo = info
+            }
         }
     }
     

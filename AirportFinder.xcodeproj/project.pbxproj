@@ -28,6 +28,7 @@
 		6C41F5A22C7DACAF004CC497 /* AirportsMapRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C41F5972C7DACAF004CC497 /* AirportsMapRouter.swift */; };
 		6C41F5A42C7DACAF004CC497 /* AirportsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C41F59B2C7DACAF004CC497 /* AirportsMapViewController.swift */; };
 		6C41F5A62C7DAFFC004CC497 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C41F5A52C7DAFFC004CC497 /* TabBarViewController.swift */; };
+		6C55A25C2C7ED5E300A9BE14 /* AirPortsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C55A25B2C7ED5E300A9BE14 /* AirPortsListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		6C41F5972C7DACAF004CC497 /* AirportsMapRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportsMapRouter.swift; sourceTree = "<group>"; };
 		6C41F59B2C7DACAF004CC497 /* AirportsMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportsMapViewController.swift; sourceTree = "<group>"; };
 		6C41F5A52C7DAFFC004CC497 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		6C55A25B2C7ED5E300A9BE14 /* AirPortsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPortsListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +260,7 @@
 			children = (
 				6C41F5A52C7DAFFC004CC497 /* TabBarViewController.swift */,
 				6C41F59B2C7DACAF004CC497 /* AirportsMapViewController.swift */,
+				6C55A25B2C7ED5E300A9BE14 /* AirPortsListViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				6C2740582C7D8EE4000C3BEB /* SliderScreenProtocols.swift in Sources */,
 				6C41F5A42C7DACAF004CC497 /* AirportsMapViewController.swift in Sources */,
 				6C338B6F2C7D7A7B00E182D2 /* AppDelegate.swift in Sources */,
+				6C55A25C2C7ED5E300A9BE14 /* AirPortsListViewController.swift in Sources */,
 				6C2740492C7D8DE4000C3BEB /* SliderScreenController.swift in Sources */,
 				6C41F59F2C7DACAF004CC497 /* AirportsMapInteractor.swift in Sources */,
 				6C27404B2C7D8DF3000C3BEB /* SliderScreenInteractor.swift in Sources */,

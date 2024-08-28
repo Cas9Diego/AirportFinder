@@ -140,7 +140,7 @@
             </objects>
             <point key="canvasLocation" x="1204" y="-6"/>
         </scene>
-        <!--Item 1-->
+        <!--Airports Map View Controller-->
         <scene sceneID="lhX-wT-L7P">
             <objects>
                 <viewController id="L5C-YQ-GeM" customClass="AirportsMapViewController" customModule="AirportFinder" customModuleProvider="target" sceneMemberID="viewController">
@@ -162,7 +162,7 @@
                             <constraint firstItem="ABk-v7-dq6" firstAttribute="trailing" secondItem="Lsb-wZ-gx5" secondAttribute="trailing" id="eFt-Q7-ls7"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" image="mappin.circle.fill" catalog="system" id="QiY-7e-wWx"/>
+                    <tabBarItem key="tabBarItem" title="" image="mappin.circle.fill" catalog="system" id="QiY-7e-wWx"/>
                     <connections>
                         <outlet property="mapView" destination="ABk-v7-dq6" id="H8R-cj-Pea"/>
                     </connections>
@@ -190,21 +190,45 @@
             </objects>
             <point key="canvasLocation" x="2086.2595419847326" y="-6.3380281690140849"/>
         </scene>
-        <!--View Controller-->
+        <!--Air Ports List View Controller-->
         <scene sceneID="Qye-bT-sMu">
             <objects>
-                <viewController id="hxf-D7-iI1" sceneMemberID="viewController">
+                <viewController id="hxf-D7-iI1" customClass="AirPortsListViewController" customModule="AirportFinder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ptn-6l-g73">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rb4-rQ-49g">
+                                <rect key="frame" x="16" y="89" width="361" height="680"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nearby Airports" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMM-6n-k8v">
+                                <rect key="frame" x="16" y="59" width="361" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="rgW-mq-lKp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rb4-rQ-49g" firstAttribute="trailing" secondItem="cMM-6n-k8v" secondAttribute="trailing" id="1Qx-Te-brn"/>
+                            <constraint firstItem="rgW-mq-lKp" firstAttribute="trailing" secondItem="cMM-6n-k8v" secondAttribute="trailing" constant="16" id="Oom-OQ-7Tv"/>
+                            <constraint firstItem="rb4-rQ-49g" firstAttribute="bottom" secondItem="rgW-mq-lKp" secondAttribute="bottom" id="Pqk-OU-MO5"/>
+                            <constraint firstItem="cMM-6n-k8v" firstAttribute="leading" secondItem="rgW-mq-lKp" secondAttribute="leading" constant="16" id="cBj-X3-HAf"/>
+                            <constraint firstItem="rb4-rQ-49g" firstAttribute="top" secondItem="cMM-6n-k8v" secondAttribute="bottom" id="cua-KK-Izg"/>
+                            <constraint firstItem="rb4-rQ-49g" firstAttribute="leading" secondItem="cMM-6n-k8v" secondAttribute="leading" id="gPk-KK-eFW"/>
+                            <constraint firstItem="cMM-6n-k8v" firstAttribute="top" secondItem="rgW-mq-lKp" secondAttribute="top" id="kDi-fE-7FF"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="list.bullet" catalog="system" id="r83-ee-lof"/>
+                    <connections>
+                        <outlet property="tableView" destination="rb4-rQ-49g" id="vGY-pN-cqi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x6z-XA-JgP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2999.2366412213737" y="285.91549295774649"/>
+            <point key="canvasLocation" x="2997.709923664122" y="285.91549295774649"/>
         </scene>
     </scenes>
     <resources>

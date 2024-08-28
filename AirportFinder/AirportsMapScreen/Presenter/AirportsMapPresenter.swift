@@ -18,6 +18,10 @@ class AirportsMapPresenter: AirportsPresenterProtocol {
         view?.setMapAreaCoverage(withLocation: withLocation)
     }
     
+    func setAirportsListProperties(withInfo info: [MKPointAnnotation]) {
+        view?.setAirportsListProperties(withInfo: info)
+    }
+    
     func consultAvailableAirPorts(location: CurrentLocation?) {
         interactor?.consultAvailableAirPorts(location: location)
     }
@@ -28,5 +32,6 @@ extension AirportsMapPresenter: AirportsMapInteractorOutProtocol{
     
     func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation]) {
         view?.setAnnotationsOnMap(withAnnotations: annotations)
+        setAirportsListProperties(withInfo: annotations)
     }
 }

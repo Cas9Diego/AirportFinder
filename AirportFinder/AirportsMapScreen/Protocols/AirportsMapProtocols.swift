@@ -15,6 +15,7 @@ protocol AirportsMapRouterProtocol: AnyObject {
 protocol AirportsMapViewProtocol: UIViewController {
     var presenter: AirportsPresenterProtocol? {get set}
     func setMapAreaCoverage(withLocation location: CurrentLocation)
+    func setAirportsListProperties(withInfo info: [MKPointAnnotation])
     func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation])
 }
 
@@ -29,6 +30,7 @@ protocol AirportsPresenterProtocol: AnyObject {
     var view: AirportsMapViewProtocol? {get set}
     var interactor: AirportsMapInteractorInProtocol? {get set}
     func setMapAreaCoverage(withLocation: CurrentLocation)
+    func setAirportsListProperties(withInfo info: [MKPointAnnotation])
     func consultAvailableAirPorts(location: CurrentLocation?)
 
 }
@@ -40,4 +42,9 @@ protocol AirportsMapInteractorInProtocol: AnyObject {
 
 protocol AirportsMapInteractorOutProtocol: AnyObject {
     func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation])
+}
+
+protocol ListViewProtocol: AnyObject {
+    var annotationsInfo: [MKPointAnnotation] { get set }
+    var presenter: AirportsPresenterProtocol?  { get set }
 }
