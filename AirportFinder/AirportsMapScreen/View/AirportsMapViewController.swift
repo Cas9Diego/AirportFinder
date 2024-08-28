@@ -10,7 +10,7 @@ import CoreLocation
 import MapKit
 
 class AirportsMapViewController: UIViewController, MapViewProtocol, MKMapViewDelegate {
-    var presenter: AirportsPresenterProtocol?
+    var presenter: TabBarPresenterProtocol?
     var didSetPins: Bool = false
     var currentMapInView: MKMapView?
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AirportsMapEntity: Codable {
+struct TabBarEntity: Codable {
      let alpha2countryCode: String?
      let iataCode: String?
      let icaoCode: String?

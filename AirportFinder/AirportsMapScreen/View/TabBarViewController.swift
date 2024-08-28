@@ -11,7 +11,7 @@ import MapKit
 
 class TabBarViewController: UITabBarController, TabBarViewProtocol {
     
-    var presenter: AirportsPresenterProtocol?
+    var presenter: TabBarPresenterProtocol?
     weak var mapViewController: MapViewProtocol?
     weak var listViewController: ListViewProtocol?
     

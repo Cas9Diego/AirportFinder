@@ -8,11 +8,11 @@
 import Foundation
 import MapKit
 
-class AirportsMapPresenter: AirportsPresenterProtocol {
+class TabBarPresenter: TabBarPresenterProtocol {
     
     weak var view: TabBarViewProtocol?
     var interactor: AirportsMapInteractorInProtocol?
-    var router: AirportsMapRouterProtocol?
+    var router: TabBarRouterProtocol?
     var didFinishFetchingPreviousPins: Bool = false
     
     func setMapAreaCoverage(withLocation: CurrentLocation) {
@@ -42,8 +42,8 @@ class AirportsMapPresenter: AirportsPresenterProtocol {
 }
 
 // MARK: - Place pins airports on map
-extension AirportsMapPresenter: AirportsMapInteractorOutProtocol{
-    func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation]) {
+extension TabBarPresenter: AirportsMapInteractorOutProtocol{
+    func setAnnotationsInTabViewControllers(withAnnotations annotations: [MKPointAnnotation]) {
         view?.setAnnotationsOnMap(withAnnotations: annotations)
         setAirportsListProperties(withInfo: annotations)
     }
@@ -51,7 +51,7 @@ extension AirportsMapPresenter: AirportsMapInteractorOutProtocol{
 
 // MARK: - Handle additional response vars
 
-extension AirportsMapPresenter {
+extension TabBarPresenter {
     func showFailedServiceAlert() {
             view?.showFailedServiceAlert()
     }

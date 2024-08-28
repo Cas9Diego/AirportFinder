@@ -7,13 +7,13 @@
 
 import UIKit
 
-class AirportsMapRouter: AirportsMapRouterProtocol {
+class TabBarRouter: TabBarRouterProtocol {
     
     static func initModule(currentLocationData: CurrentLocation) -> UITabBarController {
         let initView = UIStoryboard(name: K.srtStoryBoardName, bundle: nil).instantiateViewController(withIdentifier: K.strTabStoryboardIdentifier) as? TabBarViewController ?? TabBarViewController()
-        let presenter: AirportsPresenterProtocol & AirportsMapInteractorOutProtocol = AirportsMapPresenter()
+        let presenter: TabBarPresenterProtocol & AirportsMapInteractorOutProtocol = TabBarPresenter()
         let interactor: AirportsMapInteractorInProtocol = AirportsMapInteractor()
-        let router: AirportsMapRouterProtocol = AirportsMapRouter()
+        let router: TabBarRouterProtocol = TabBarRouter()
         
         initView.presenter = presenter
         presenter.router = router

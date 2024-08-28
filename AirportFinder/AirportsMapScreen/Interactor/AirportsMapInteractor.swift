@@ -46,7 +46,7 @@ class AirportsMapInteractor: AirportsMapInteractorInProtocol {
         guard let data = data else {   presenter?.showFailedServiceAlert()
             return}
         do {
-          let airPortsArray = try JSONDecoder().decode([AirportsMapEntity].self, from: data)
+          let airPortsArray = try JSONDecoder().decode([TabBarEntity].self, from: data)
             DispatchQueue.main.async {
                 self.setMapPins(withAirPorts: airPortsArray)
             }
@@ -59,7 +59,7 @@ class AirportsMapInteractor: AirportsMapInteractorInProtocol {
         }
     }
     
-    func setMapPins(withAirPorts airportsArray: [AirportsMapEntity] ) {
+    func setMapPins(withAirPorts airportsArray: [TabBarEntity] ) {
         var arrayOfAirPorts:[MKPointAnnotation] = []
         for airport in airportsArray {
             let annotation = MKPointAnnotation()
@@ -69,7 +69,7 @@ class AirportsMapInteractor: AirportsMapInteractorInProtocol {
             arrayOfAirPorts.append(annotation)
         }
         presenter?.didFinishFetchingAnnotations()
-        presenter?.setAnnotationsOnMap(withAnnotations: arrayOfAirPorts)
+        presenter?.setAnnotationsInTabViewControllers(withAnnotations: arrayOfAirPorts)
     }
 
 }

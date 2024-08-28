@@ -8,12 +8,12 @@
 import UIKit
 import MapKit
 
-protocol AirportsMapRouterProtocol: AnyObject {
+protocol TabBarRouterProtocol: AnyObject {
     static func initModule(currentLocationData: CurrentLocation) -> UITabBarController
 }
 
 protocol TabBarViewProtocol: UIViewController {
-    var presenter: AirportsPresenterProtocol? {get set}
+    var presenter: TabBarPresenterProtocol? {get set}
     var listViewController: ListViewProtocol? {get set}
     func setMapAreaCoverage(withLocation location: CurrentLocation)
     func setAirportsListProperties(withInfo info: [MKPointAnnotation])
@@ -24,12 +24,12 @@ protocol TabBarViewProtocol: UIViewController {
 
 protocol MapViewProtocol: AnyObject {
     var location: CurrentLocation? {get set}
-    var presenter: AirportsPresenterProtocol? {get set}
+    var presenter: TabBarPresenterProtocol? {get set}
     func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation])
 }
 
-protocol AirportsPresenterProtocol: AnyObject {
-    var router: AirportsMapRouterProtocol? {get set}
+protocol TabBarPresenterProtocol: AnyObject {
+    var router: TabBarRouterProtocol? {get set}
     var view: TabBarViewProtocol? {get set}
     var interactor: AirportsMapInteractorInProtocol? {get set}
     var didFinishFetchingPreviousPins: Bool {get set}
@@ -46,7 +46,7 @@ protocol AirportsMapInteractorInProtocol: AnyObject {
 }
 
 protocol AirportsMapInteractorOutProtocol: AnyObject {
-    func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation])
+    func setAnnotationsInTabViewControllers(withAnnotations annotations: [MKPointAnnotation])
     func showFailedServiceAlert() 
     func didFinishFetchingAnnotations()
     func reloadTable()
@@ -54,7 +54,7 @@ protocol AirportsMapInteractorOutProtocol: AnyObject {
 
 protocol ListViewProtocol: AnyObject {
     var annotationsInfo: [MKPointAnnotation] { get set }
-    var presenter: AirportsPresenterProtocol?  { get set }
+    var presenter: TabBarPresenterProtocol?  { get set }
     var didfetchData: Bool  { get set }
     func reloadTable()
     func stopAnimating()

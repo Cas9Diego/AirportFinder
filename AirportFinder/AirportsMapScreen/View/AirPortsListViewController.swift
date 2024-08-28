@@ -11,7 +11,7 @@ import MapKit
 class AirPortsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ListViewProtocol {
     
     @IBOutlet var tableView: UITableView!
-    var presenter: AirportsPresenterProtocol?
+    var presenter: TabBarPresenterProtocol?
     var annotationsInfo: [MKPointAnnotation] = []
     var didfetchData: Bool = false
     let activityIndicator = UIActivityIndicatorView(style: .large)

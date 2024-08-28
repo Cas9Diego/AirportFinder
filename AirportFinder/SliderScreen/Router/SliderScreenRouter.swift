@@ -25,7 +25,7 @@ class SliderScreenRouter: SliderScreenRouterProtocol {
     }
     
     func initMapView(withLocationData: CurrentLocation, fromViewController: SliderScreenViewProtocol) {
-        fromViewController.navigationController?.pushViewController(AirportsMapRouter.initModule(currentLocationData: withLocationData), animated: true)
+        fromViewController.navigationController?.pushViewController(TabBarRouter.initModule(currentLocationData: withLocationData), animated: true)
     }
 }
 
