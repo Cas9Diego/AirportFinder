@@ -10,7 +10,7 @@ import MapKit
 
 class AirportsMapPresenter: AirportsPresenterProtocol {
     
-    weak var view: TabBatViewProtocol?
+    weak var view: TabBarViewProtocol?
     var interactor: AirportsMapInteractorInProtocol?
     var router: AirportsMapRouterProtocol?
     
@@ -35,6 +35,6 @@ extension AirportsMapPresenter: AirportsMapInteractorOutProtocol{
     }
     
     func showFailedServiceAlert() {
-        
+        view?.showFailedServiceAlert()
     }
 }

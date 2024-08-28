@@ -14,16 +14,16 @@ class TabBarViewController: UITabBarController, TabBarViewProtocol {
     var presenter: AirportsPresenterProtocol?
     weak var mapViewController: MapViewProtocol?
     weak var listViewController: ListViewProtocol?
+    var location: CurrentLocation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        presenter?.consultAvailableAirPorts(location: location)
     }
     
     func setMapAreaCoverage(withLocation location: CurrentLocation) {
         DispatchQueue.main.async {
-            if var mapViewController = self.viewControllers?.first as? MapViewProtocol {
+            if let mapViewController = self.viewControllers?.first as? MapViewProtocol {
                 self.mapViewController = mapViewController
                 mapViewController.location = location
                 mapViewController.presenter = self.presenter
@@ -37,7 +37,7 @@ class TabBarViewController: UITabBarController, TabBarViewProtocol {
                 self.listViewController = listViewController
                 listViewController.presenter = self.presenter
                 listViewController.annotationsInfo = info
-                listViewController.stopAnimating()
+                listViewController.didfetchData = true
             }
         }
     }

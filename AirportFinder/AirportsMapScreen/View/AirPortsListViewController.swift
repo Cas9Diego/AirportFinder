@@ -13,6 +13,7 @@ class AirPortsListViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet var tableView: UITableView!
     var presenter: AirportsPresenterProtocol?
     var annotationsInfo: [MKPointAnnotation] = []
+    var didfetchData: Bool = false
     let activityIndicator = UIActivityIndicatorView(style: .large)
 
     override func viewDidLoad() {
@@ -22,6 +23,12 @@ class AirPortsListViewController: UIViewController, UITableViewDataSource, UITab
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         setupActivityIndicator()
         activityIndicator.startAnimating()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if didfetchData {
+            stopAnimating()
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -45,6 +52,5 @@ class AirPortsListViewController: UIViewController, UITableViewDataSource, UITab
     
     func stopAnimating() {
         activityIndicator.stopAnimating()
-        tableView.reloadData()
     }
 }
