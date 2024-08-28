@@ -9,7 +9,7 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class AirportsMapViewController: UIViewController, MapViewProtocol {
+class AirportsMapViewController: UIViewController, MapViewProtocol, MKMapViewDelegate {
     var presenter: AirportsMapPresenterProtocol?
     
     @IBOutlet var mapView: MKMapView!
@@ -17,6 +17,7 @@ class AirportsMapViewController: UIViewController, MapViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.delegate = self
         setupMap()
         mapView.showsUserLocation = true
     }
@@ -36,6 +37,19 @@ class AirportsMapViewController: UIViewController, MapViewProtocol {
         for pin in annotations {
             mapView.addAnnotation(pin)
         }
+        setupMap()
     }
-    
+}
+
+
+extension AirportsMapViewController {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !(annotation is MKUserLocation) else { return nil}
+        let identifier = UUID().uuidString
+        let pinView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        pinView.canShowCallout = true
+        pinView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+
+        return pinView
+    }
 }

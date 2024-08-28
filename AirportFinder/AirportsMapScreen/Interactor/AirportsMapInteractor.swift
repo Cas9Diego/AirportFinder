@@ -32,7 +32,7 @@ class AirportsMapInteractor: AirportsMapInteractorInProtocol {
     }
     
     func getURLWithCurrentlocation(_ location: CurrentLocation?) -> URL? {
-        let url = URL(string: "https://aviation-reference-data.p.rapidapi.com/airports/search?lat=\(location?.latitude ?? 0.0)&lon=\(location?.longitude ?? 0.0)&radius=\(Int(location?.radius ?? 0))")
+        let url = URL(string: "https://aviation-reference-data.p.rapidapi.com/airports/search?lat=\(location?.latitude ?? 0.0)&lon=\(location?.longitude ?? 0.0)&radius=\(Int(location?.radius ?? 0)/1000)")
         
         return url
     }
@@ -51,6 +51,8 @@ class AirportsMapInteractor: AirportsMapInteractorInProtocol {
         for airport in airportsArray {
             let annotation = MKPointAnnotation()
             annotation.coordinate = CLLocationCoordinate2D(latitude: airport.latitude ?? 0.0, longitude: airport.longitude ?? 0.0)
+            annotation.title = airport.name
+            annotation.subtitle = airport.alpha2countryCode
             arrayOfAirPorts.append(annotation)
         }
         presenter?.setAnnotationsOnMap(withAnnotations: arrayOfAirPorts)

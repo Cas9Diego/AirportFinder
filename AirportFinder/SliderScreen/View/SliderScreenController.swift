@@ -33,7 +33,7 @@ class SliderScreenViewController: UIViewController, SliderScreenViewProtocol {
     
     @IBAction func didPressSearchButton(_ sender: UIButton) {
         locationManager.requestLocation()
-        presenter?.didPressSearchButton(withSearchRadius: Int(slider.value))
+        presenter?.didPressSearchButton(withSearchRadius: Int(slider.value)*1000)
     }
     
     
