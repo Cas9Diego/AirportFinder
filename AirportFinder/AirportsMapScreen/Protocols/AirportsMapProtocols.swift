@@ -32,12 +32,12 @@ protocol AirportsPresenterProtocol: AnyObject {
     var router: AirportsMapRouterProtocol? {get set}
     var view: TabBarViewProtocol? {get set}
     var interactor: AirportsMapInteractorInProtocol? {get set}
-    var didFinishFetchingPinsBool: Bool {get set}
+    var didFinishFetchingPreviousPins: Bool {get set}
     func didFinishFetchingPins()
     func setMapAreaCoverage(withLocation: CurrentLocation)
     func setAirportsListProperties(withInfo info: [MKPointAnnotation])
     func consultAvailableAirPorts(location: CurrentLocation?)
-    func consultAvailableAirPorts(location: CurrentLocation?, locationUpdated: Bool)
+    func consultAdditionalAirports(location: CurrentLocation?)
 }
 
 protocol AirportsMapInteractorInProtocol: AnyObject {

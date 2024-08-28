@@ -62,13 +62,13 @@ class AirportsMapViewController: UIViewController, MapViewProtocol, MKMapViewDel
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         currentMapInView = mapView
-        if presenter?.didFinishFetchingPinsBool ?? true {
+        if presenter?.didFinishFetchingPreviousPins ?? true {
             let mapRegion = mapView.centerCoordinate
             let latitude = mapRegion.latitude
             let longitude = mapRegion.longitude
             let areaOnMap = CurrentLocation(latitude: latitude, longitude: longitude, center: CLLocation(latitude: latitude, longitude: longitude), radius: location?.radius ?? 0)
             DispatchQueue.main.async {
-                self.presenter?.consultAvailableAirPorts(location: areaOnMap, locationUpdated: true)
+                self.presenter?.consultAdditionalAirports(location: areaOnMap)
             }
         }
         mapView.userTrackingMode = .none
