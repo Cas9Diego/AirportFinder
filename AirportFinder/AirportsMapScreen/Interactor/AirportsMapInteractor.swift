@@ -16,8 +16,8 @@ class AirportsMapInteractor: AirportsMapInteractorInProtocol {
         "x-rapidapi-host": "aviation-reference-data.p.rapidapi.com"
     ]
     
-    func consultAvailableAirPorts(location: CurrentLocation?) {
-        let url = getURLWithCurrentlocation(location)
+    func consultAvailableAirPorts(location: CurrentLocation?, isRetry: Bool) {
+        let url = getURLWithCurrentlocation(location, isRetry: isRetry)
         guard let url = url else { return }
         var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
         request.httpMethod = "GET"
@@ -34,7 +34,8 @@ class AirportsMapInteractor: AirportsMapInteractorInProtocol {
         }).resume()
     }
     
-    func getURLWithCurrentlocation(_ location: CurrentLocation?) -> URL? {
+    func getURLWithCurrentlocation(_ location: CurrentLocation?, isRetry: Bool) -> URL? {
+        let radiosAdjust = isRetry ? 1: 1000
         let url = URL(string: "https://aviation-reference-data.p.rapidapi.com/airports/search?lat=\(location?.latitude ?? 0.0)&lon=\(location?.longitude ?? 0.0)&radius=\(Int(location?.radius ?? 0)/1000)")
         
         return url
@@ -45,10 +46,15 @@ class AirportsMapInteractor: AirportsMapInteractorInProtocol {
             return}
         do {
           let airPortsArray = try JSONDecoder().decode([AirportsMapEntity].self, from: data)
-            setMapPins(withAirPorts: airPortsArray)
+            DispatchQueue.main.async {
+                self.setMapPins(withAirPorts: airPortsArray)
+            }
         } catch {
             print("ParsingError", error.localizedDescription)
-            presenter?.showFailedServiceAlert()
+            presenter?.didFinishFetchingWithData()
+            DispatchQueue.main.async {
+                self.presenter?.showFailedServiceAlert()
+            }
         }
     }
     
@@ -61,6 +67,7 @@ class AirportsMapInteractor: AirportsMapInteractorInProtocol {
             annotation.subtitle = airport.alpha2countryCode
             arrayOfAirPorts.append(annotation)
         }
+        presenter?.didFinishFetchingWithData()
         presenter?.setAnnotationsOnMap(withAnnotations: arrayOfAirPorts)
     }
 

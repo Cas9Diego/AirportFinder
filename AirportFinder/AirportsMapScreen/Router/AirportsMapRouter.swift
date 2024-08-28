@@ -16,13 +16,12 @@ class AirportsMapRouter: AirportsMapRouterProtocol {
         let router: AirportsMapRouterProtocol = AirportsMapRouter()
         
         initView.presenter = presenter
-        initView.location = currentLocationData
         presenter.router = router
         presenter.view = initView
         presenter.interactor = interactor
         interactor.presenter = presenter
         presenter.setMapAreaCoverage(withLocation: currentLocationData)
-        interactor.consultAvailableAirPorts(location: currentLocationData)
+        interactor.consultAvailableAirPorts(location: currentLocationData, isRetry: false)
         
         return initView
     }

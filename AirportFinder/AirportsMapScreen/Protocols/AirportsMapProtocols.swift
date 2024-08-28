@@ -31,19 +31,23 @@ protocol AirportsPresenterProtocol: AnyObject {
     var router: AirportsMapRouterProtocol? {get set}
     var view: TabBarViewProtocol? {get set}
     var interactor: AirportsMapInteractorInProtocol? {get set}
+    var didFinishFetching: Bool {get set}
+    func didFinishFetchingData()
     func setMapAreaCoverage(withLocation: CurrentLocation)
     func setAirportsListProperties(withInfo info: [MKPointAnnotation])
     func consultAvailableAirPorts(location: CurrentLocation?)
+    func consultAvailableAirPorts(location: CurrentLocation?, locationUpdated: Bool)
 }
 
 protocol AirportsMapInteractorInProtocol: AnyObject {
     var presenter: AirportsMapInteractorOutProtocol? {get set}
-    func consultAvailableAirPorts(location: CurrentLocation?)
+    func consultAvailableAirPorts(location: CurrentLocation?, isRetry: Bool)
 }
 
 protocol AirportsMapInteractorOutProtocol: AnyObject {
     func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation])
     func showFailedServiceAlert() 
+    func didFinishFetchingWithData()
 }
 
 protocol ListViewProtocol: AnyObject {

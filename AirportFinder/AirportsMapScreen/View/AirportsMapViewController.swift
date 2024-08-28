@@ -11,6 +11,8 @@ import MapKit
 
 class AirportsMapViewController: UIViewController, MapViewProtocol, MKMapViewDelegate {
     var presenter: AirportsPresenterProtocol?
+    var didSetPins: Bool = false
+    var currentMapInView: MKMapView?
     
     @IBOutlet var mapView: MKMapView!
     var location: CurrentLocation?
@@ -21,14 +23,17 @@ class AirportsMapViewController: UIViewController, MapViewProtocol, MKMapViewDel
         mapView.delegate = self
         setupMap()
         mapView.showsUserLocation = true
+        mapView.userTrackingMode = .none
         setupActivityIndicator()
         activityIndicator.startAnimating()
     }
   
     func setupMap() {
-        if let centerCoordinate = location?.center?.coordinate, let radius = location?.radius {
-            let region = MKCoordinateRegion(center: centerCoordinate, latitudinalMeters: CLLocationDistance(radius), longitudinalMeters: CLLocationDistance(radius))
-            mapView.setRegion(region, animated: true)
+        DispatchQueue.main.async {
+            if let centerCoordinate = self.location?.center?.coordinate, let radius = self.location?.radius {
+                let region = MKCoordinateRegion(center: centerCoordinate, latitudinalMeters: CLLocationDistance(radius), longitudinalMeters: CLLocationDistance(radius))
+                self.mapView.setRegion(region, animated: true)
+            }
         }
     }
     
@@ -38,7 +43,13 @@ class AirportsMapViewController: UIViewController, MapViewProtocol, MKMapViewDel
             self.mapView.addAnnotation(pin)
         }
             self.activityIndicator.stopAnimating()
-            self.setupMap()
+            if !self.didSetPins {
+                self.setupMap()
+            }
+            DispatchQueue.global().asyncAfter(deadline: .now() + 3) {
+                self.didSetPins = true
+                self.presenter?.didFinishFetchingData()
+            }
         }
     }
     
@@ -46,6 +57,20 @@ class AirportsMapViewController: UIViewController, MapViewProtocol, MKMapViewDel
         activityIndicator.center = view.center
         activityIndicator.hidesWhenStopped = true
         view.addSubview(activityIndicator)
+    }
+    
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        currentMapInView = mapView
+        if presenter?.didFinishFetching ?? true {
+            let mapRegion = mapView.centerCoordinate
+            let latitude = mapRegion.latitude
+            let longitude = mapRegion.longitude
+            let areaOnMap = CurrentLocation(latitude: latitude, longitude: longitude, center: CLLocation(latitude: latitude, longitude: longitude), radius: location?.radius ?? 0)
+            DispatchQueue.main.async {
+                self.presenter?.consultAvailableAirPorts(location: areaOnMap, locationUpdated: true)
+            }
+        }
+        mapView.userTrackingMode = .none
     }
 }
 

@@ -13,6 +13,7 @@ class AirportsMapPresenter: AirportsPresenterProtocol {
     weak var view: TabBarViewProtocol?
     var interactor: AirportsMapInteractorInProtocol?
     var router: AirportsMapRouterProtocol?
+    var didFinishFetching: Bool = false
     
     func setMapAreaCoverage(withLocation: CurrentLocation) {
         view?.setMapAreaCoverage(withLocation: withLocation)
@@ -23,7 +24,20 @@ class AirportsMapPresenter: AirportsPresenterProtocol {
     }
     
     func consultAvailableAirPorts(location: CurrentLocation?) {
-        interactor?.consultAvailableAirPorts(location: location)
+        interactor?.consultAvailableAirPorts(location: location, isRetry: false)
+    }
+    
+    func consultAvailableAirPorts(location: CurrentLocation?, locationUpdated: Bool) {
+        if didFinishFetching {
+            didFinishFetching = false
+            DispatchQueue.main.async {
+                self.interactor?.consultAvailableAirPorts(location: location, isRetry: true)
+            }
+        }
+    }
+    
+    func didFinishFetchingData() {
+        didFinishFetching = true
     }
 }
 
@@ -35,6 +49,10 @@ extension AirportsMapPresenter: AirportsMapInteractorOutProtocol{
     }
     
     func showFailedServiceAlert() {
-        view?.showFailedServiceAlert()
+            view?.showFailedServiceAlert()
+    }
+    
+    func didFinishFetchingWithData() {
+        didFinishFetchingData()
     }
 }
