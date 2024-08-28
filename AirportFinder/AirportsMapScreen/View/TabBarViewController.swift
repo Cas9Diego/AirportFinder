@@ -31,11 +31,16 @@ class TabBarViewController: UITabBarController, TabBarViewProtocol {
     
     func setAirportsListProperties(withInfo info: [MKPointAnnotation]) {
         DispatchQueue.main.async {
-            if let listViewController = self.viewControllers?[1] as? ListViewProtocol {
+            if self.listViewController != nil {
+                self.listViewController?.didfetchData = true
+                self.listViewController?.annotationsInfo = info
+                self.reloadTable()
+            } else if let listViewController = self.viewControllers?[1] as? ListViewProtocol {
                 self.listViewController = listViewController
+                self.listViewController?.didfetchData = true
                 listViewController.presenter = self.presenter
-                listViewController.annotationsInfo = info
-                listViewController.didfetchData = true
+                self.listViewController?.annotationsInfo = info
+                self.reloadTable()
             }
         }
     }

@@ -57,4 +57,5 @@ protocol ListViewProtocol: AnyObject {
     var presenter: AirportsPresenterProtocol?  { get set }
     var didfetchData: Bool  { get set }
     func reloadTable()
+    func stopAnimating()
 }

@@ -69,7 +69,6 @@ class AirportsMapInteractor: AirportsMapInteractorInProtocol {
         }
         presenter?.didFinishFetchingWithData()
         presenter?.setAnnotationsOnMap(withAnnotations: arrayOfAirPorts)
-        presenter?.reloadTable()
     }
 
 }

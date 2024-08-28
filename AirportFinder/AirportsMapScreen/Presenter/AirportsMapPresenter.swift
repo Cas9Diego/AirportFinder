@@ -21,7 +21,6 @@ class AirportsMapPresenter: AirportsPresenterProtocol {
     
     func setAirportsListProperties(withInfo info: [MKPointAnnotation]) {
         view?.setAirportsListProperties(withInfo: info)
-        view?.reloadTable()
     }
     
     func consultAvailableAirPorts(location: CurrentLocation?) {
