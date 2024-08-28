@@ -39,7 +39,7 @@ class SliderScreenViewController: UIViewController, SliderScreenViewProtocol {
     
 }
 
-//Mark - Getting user coordinates
+// MARK: - Getting user coordinates
 extension SliderScreenViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {

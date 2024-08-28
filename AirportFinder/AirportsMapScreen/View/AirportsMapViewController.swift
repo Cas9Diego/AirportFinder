@@ -41,7 +41,7 @@ class AirportsMapViewController: UIViewController, MapViewProtocol, MKMapViewDel
     }
 }
 
-
+// MARK: - Pins personalization
 extension AirportsMapViewController {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !(annotation is MKUserLocation) else { return nil}
@@ -49,7 +49,6 @@ extension AirportsMapViewController {
         let pinView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
         pinView.canShowCallout = true
         pinView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-
         return pinView
     }
 }
