@@ -13,7 +13,7 @@ class AirportsMapPresenter: AirportsPresenterProtocol {
     weak var view: TabBarViewProtocol?
     var interactor: AirportsMapInteractorInProtocol?
     var router: AirportsMapRouterProtocol?
-    var didFinishFetching: Bool = false
+    var didFinishFetchingPinsBool: Bool = false
     
     func setMapAreaCoverage(withLocation: CurrentLocation) {
         view?.setMapAreaCoverage(withLocation: withLocation)
@@ -28,36 +28,41 @@ class AirportsMapPresenter: AirportsPresenterProtocol {
     }
     
     func consultAvailableAirPorts(location: CurrentLocation?, locationUpdated: Bool) {
-        if didFinishFetching {
-            didFinishFetching = false
+        if didFinishFetchingPinsBool {
+            didFinishFetchingPinsBool = false
             DispatchQueue.main.async {
                 self.interactor?.consultAvailableAirPorts(location: location, isRetry: true)
             }
         }
     }
     
-    func didFinishFetchingData() {
-        didFinishFetching = true
+    func didFinishFetchingPins() {
+        didFinishFetchingPinsBool = true
     }
 }
 
+// MARK: - Place pins airports on map
 extension AirportsMapPresenter: AirportsMapInteractorOutProtocol{
-    
     func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation]) {
         view?.setAnnotationsOnMap(withAnnotations: annotations)
         setAirportsListProperties(withInfo: annotations)
     }
-    
+}
+
+// MARK: - Handle additional response vars
+
+extension AirportsMapPresenter {
     func showFailedServiceAlert() {
             view?.showFailedServiceAlert()
     }
     
-    func didFinishFetchingWithData() {
-        didFinishFetchingData()
-        
+    func didFinishFetchingAnnotations() {
+        didFinishFetchingPins()
     }
     
     func reloadTable() {
         view?.reloadTable()
     }
 }
+
+

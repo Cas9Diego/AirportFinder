@@ -49,7 +49,7 @@ class AirportsMapViewController: UIViewController, MapViewProtocol, MKMapViewDel
             }
             DispatchQueue.global().asyncAfter(deadline: .now() + 3) {
                 self.didSetPins = true
-                self.presenter?.didFinishFetchingData()
+                self.presenter?.didFinishFetchingPins()
             }
         }
     }
@@ -62,7 +62,7 @@ class AirportsMapViewController: UIViewController, MapViewProtocol, MKMapViewDel
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         currentMapInView = mapView
-        if presenter?.didFinishFetching ?? true {
+        if presenter?.didFinishFetchingPins ?? true {
             let mapRegion = mapView.centerCoordinate
             let latitude = mapRegion.latitude
             let longitude = mapRegion.longitude

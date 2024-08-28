@@ -51,7 +51,7 @@ class AirportsMapInteractor: AirportsMapInteractorInProtocol {
             }
         } catch {
             print("ParsingError", error.localizedDescription)
-            presenter?.didFinishFetchingWithData()
+            presenter?.didFinishFetchingAnnotations()
             DispatchQueue.main.async {
                 self.presenter?.showFailedServiceAlert()
             }
@@ -67,7 +67,7 @@ class AirportsMapInteractor: AirportsMapInteractorInProtocol {
             annotation.subtitle = airport.alpha2countryCode
             arrayOfAirPorts.append(annotation)
         }
-        presenter?.didFinishFetchingWithData()
+        presenter?.didFinishFetchingAnnotations()
         presenter?.setAnnotationsOnMap(withAnnotations: arrayOfAirPorts)
     }
 

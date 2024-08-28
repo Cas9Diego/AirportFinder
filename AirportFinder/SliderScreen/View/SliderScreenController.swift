@@ -55,11 +55,11 @@ extension SliderScreenViewController: CLLocationManagerDelegate {
     }
 }
 
+// MARK: - Loadder
 extension SliderScreenViewController {
     private func setupActivityIndicator() {
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(activityIndicator)
-
         NSLayoutConstraint.activate([
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)

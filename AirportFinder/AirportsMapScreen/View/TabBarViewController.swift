@@ -51,7 +51,7 @@ class TabBarViewController: UITabBarController, TabBarViewProtocol {
     
     func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation]) {
         mapViewController?.setAnnotationsOnMap(withAnnotations: annotations)
-        presenter?.didFinishFetchingData()
+        presenter?.didFinishFetchingPins()
     }
     
     func showFailedServiceAlert() {
