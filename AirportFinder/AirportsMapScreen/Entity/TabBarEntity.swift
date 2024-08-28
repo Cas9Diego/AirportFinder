@@ -16,6 +16,7 @@ struct TabBarEntity: Codable {
      let name: String?
 }
 
+// MARK: Constants struct
 struct K {
     static let srtStoryBoardName = "AirPortFinderViews"
     static let strTabStoryboardIdentifier = "TabBarStoryBoard"

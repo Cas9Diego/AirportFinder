@@ -26,6 +26,7 @@ struct CurrentLocation {
     }
 }
 
+// MARK: Constants struct
 struct V {
     static let srtSliderStoryboardIdentifier = "InitialStoryBoard"
     static let strLocationAlertTittle = "Algo falló"
