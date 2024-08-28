@@ -25,3 +25,11 @@ struct CurrentLocation {
         self.radius = radius
     }
 }
+
+struct V {
+    static let srtSliderStoryboardIdentifier = "InitialStoryBoard"
+    static let strLocationAlertTittle = "Algo falló"
+    static let strLocationAlertMessage = "No pudimos recuperar tu ubicación"
+    static let strRequestLocation = "Necesitamos acceso a tu ubicación"
+    static let strAcceptAction = "Aceptar"
+}
