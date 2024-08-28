@@ -44,6 +44,7 @@ class AirportsMapViewController: UIViewController, MapViewProtocol, MKMapViewDel
         }
             self.activityIndicator.stopAnimating()
             if !self.didSetPins {
+                self.didSetPins = true
                 self.setupMap()
             }
             DispatchQueue.global().asyncAfter(deadline: .now() + 3) {

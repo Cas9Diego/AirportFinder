@@ -29,6 +29,9 @@ class AirPortsListViewController: UIViewController, UITableViewDataSource, UITab
         if didfetchData {
             stopAnimating()
         }
+        if annotationsInfo.isEmpty || annotationsInfo.count < 1 {
+            activityIndicator.startAnimating()
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -37,6 +40,7 @@ class AirPortsListViewController: UIViewController, UITableViewDataSource, UITab
         content.text = annotationsInfo[indexPath.row].title
         content.secondaryText = annotationsInfo[indexPath.row].subtitle
         cell.contentConfiguration = content
+        cell.selectionStyle = .none
         return cell
     }
     
