@@ -11,7 +11,7 @@ import MapKit
 class TabBarPresenter: TabBarPresenterProtocol {
     
     weak var view: TabBarViewProtocol?
-    var interactor: AirportsMapInteractorInProtocol?
+    var interactor: TabBarInteractorInProtocol?
     var router: TabBarRouterProtocol?
     var didFinishFetchingPreviousPins: Bool = false
     
@@ -42,7 +42,7 @@ class TabBarPresenter: TabBarPresenterProtocol {
 }
 
 // MARK: - Place pins airports on map
-extension TabBarPresenter: AirportsMapInteractorOutProtocol{
+extension TabBarPresenter: TabBarInteractorOutProtocol{
     func setAnnotationsInTabViewControllers(withAnnotations annotations: [MKPointAnnotation]) {
         view?.setAnnotationsOnMap(withAnnotations: annotations)
         setAirportsListProperties(withInfo: annotations)

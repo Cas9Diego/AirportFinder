@@ -8,9 +8,9 @@
 import Foundation
 import MapKit
 
-class AirportsMapInteractor: AirportsMapInteractorInProtocol {
+class AirportsMapInteractor: TabBarInteractorInProtocol {
 
-    weak var presenter: AirportsMapInteractorOutProtocol?
+    weak var presenter: TabBarInteractorOutProtocol?
     var apiHeaders =  [
         "x-rapidapi-key": K.strApiKey,
         "x-rapidapi-host": K.strApiHost

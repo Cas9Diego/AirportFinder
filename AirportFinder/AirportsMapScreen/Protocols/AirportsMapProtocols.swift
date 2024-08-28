@@ -31,7 +31,7 @@ protocol MapViewProtocol: AnyObject {
 protocol TabBarPresenterProtocol: AnyObject {
     var router: TabBarRouterProtocol? {get set}
     var view: TabBarViewProtocol? {get set}
-    var interactor: AirportsMapInteractorInProtocol? {get set}
+    var interactor: TabBarInteractorInProtocol? {get set}
     var didFinishFetchingPreviousPins: Bool {get set}
     func didFinishFetchingPins()
     func setMapAreaCoverage(withLocation: CurrentLocation)
@@ -40,12 +40,12 @@ protocol TabBarPresenterProtocol: AnyObject {
     func consultAdditionalAirports(location: CurrentLocation?)
 }
 
-protocol AirportsMapInteractorInProtocol: AnyObject {
-    var presenter: AirportsMapInteractorOutProtocol? {get set}
+protocol TabBarInteractorInProtocol: AnyObject {
+    var presenter: TabBarInteractorOutProtocol? {get set}
     func consultAvailableAirPorts(location: CurrentLocation?, isRetry: Bool)
 }
 
-protocol AirportsMapInteractorOutProtocol: AnyObject {
+protocol TabBarInteractorOutProtocol: AnyObject {
     func setAnnotationsInTabViewControllers(withAnnotations annotations: [MKPointAnnotation])
     func showFailedServiceAlert() 
     func didFinishFetchingAnnotations()
