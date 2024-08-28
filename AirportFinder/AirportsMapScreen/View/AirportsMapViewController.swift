@@ -14,12 +14,15 @@ class AirportsMapViewController: UIViewController, MapViewProtocol, MKMapViewDel
     
     @IBOutlet var mapView: MKMapView!
     var location: CurrentLocation?
+    let activityIndicator = UIActivityIndicatorView(style: .large)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         setupMap()
         mapView.showsUserLocation = true
+        setupActivityIndicator()
+        activityIndicator.startAnimating()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,10 +37,19 @@ class AirportsMapViewController: UIViewController, MapViewProtocol, MKMapViewDel
     }
     
     func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation]) {
+        DispatchQueue.main.async {
         for pin in annotations {
-            mapView.addAnnotation(pin)
+            self.mapView.addAnnotation(pin)
         }
-        setupMap()
+            self.activityIndicator.stopAnimating()
+            self.setupMap()
+        }
+    }
+    
+    private func setupActivityIndicator() {
+        activityIndicator.center = view.center
+        activityIndicator.hidesWhenStopped = true
+        view.addSubview(activityIndicator)
     }
 }
 

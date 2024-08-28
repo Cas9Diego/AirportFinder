@@ -12,8 +12,9 @@ protocol AirportsMapRouterProtocol: AnyObject {
     static func initModule(currentLocationData: CurrentLocation) -> UITabBarController
 }
 
-protocol AirportsMapViewProtocol: UIViewController {
+protocol TabBatViewProtocol: UIViewController {
     var presenter: AirportsPresenterProtocol? {get set}
+    var listViewController: ListViewProtocol? {get set}
     func setMapAreaCoverage(withLocation location: CurrentLocation)
     func setAirportsListProperties(withInfo info: [MKPointAnnotation])
     func setAnnotationsOnMap(withAnnotations annotations: [MKPointAnnotation])
@@ -27,12 +28,11 @@ protocol MapViewProtocol {
 
 protocol AirportsPresenterProtocol: AnyObject {
     var router: AirportsMapRouterProtocol? {get set}
-    var view: AirportsMapViewProtocol? {get set}
+    var view: TabBatViewProtocol? {get set}
     var interactor: AirportsMapInteractorInProtocol? {get set}
     func setMapAreaCoverage(withLocation: CurrentLocation)
     func setAirportsListProperties(withInfo info: [MKPointAnnotation])
     func consultAvailableAirPorts(location: CurrentLocation?)
-
 }
 
 protocol AirportsMapInteractorInProtocol: AnyObject {
@@ -47,4 +47,5 @@ protocol AirportsMapInteractorOutProtocol: AnyObject {
 protocol ListViewProtocol: AnyObject {
     var annotationsInfo: [MKPointAnnotation] { get set }
     var presenter: AirportsPresenterProtocol?  { get set }
+    func stopAnimating()
 }

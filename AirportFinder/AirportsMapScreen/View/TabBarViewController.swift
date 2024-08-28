@@ -9,7 +9,7 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class TabBarViewController: UITabBarController, AirportsMapViewProtocol {
+class TabBarViewController: UITabBarController, TabBatViewProtocol {
     
     var presenter: AirportsPresenterProtocol?
     var mapViewController: MapViewProtocol?
@@ -37,6 +37,7 @@ class TabBarViewController: UITabBarController, AirportsMapViewProtocol {
                 self.listViewController = listViewController
                 listViewController.presenter = self.presenter
                 listViewController.annotationsInfo = info
+                listViewController.stopAnimating()
             }
         }
     }
