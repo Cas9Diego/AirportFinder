@@ -27,6 +27,18 @@ class SliderScreenRouter: SliderScreenRouterProtocol {
     func initMapView(withLocationData: CurrentLocation, fromViewController: SliderScreenViewProtocol) {
         fromViewController.navigationController?.pushViewController(TabBarRouter.initModule(currentLocationData: withLocationData), animated: true)
     }
+    
+    func sendToSettings(fromViewController: SliderScreenViewProtocol?) {
+        let alert = UIAlertController(title: V.strLocationAlertTittle, message: V.strRequestLocation, preferredStyle: .alert)
+        let acceptAction = UIAlertAction(title: V.strAcceptAction, style: .default) {_ in
+            guard let settingsDirectory = URL(string: UIApplication.openSettingsURLString) else { return }
+            if UIApplication.shared.canOpenURL(settingsDirectory) {
+                UIApplication.shared.open(settingsDirectory)
+            }
+        }
+        alert.addAction(acceptAction)
+        fromViewController?.present(alert, animated: true)
+    }
 }
 
 

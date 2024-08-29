@@ -17,6 +17,7 @@ class SliderScreenPresenter: SliderScreenPresenterProtocol {
     var latitude = 0.0
     var longitude = 0.0
     var center: CLLocation?
+    var radius: Int?
     
     func updateLocationValues(latitude: CLLocationDegrees, longitude: CLLocationDegrees, center: CLLocation?) {
         self.latitude = latitude
@@ -25,48 +26,20 @@ class SliderScreenPresenter: SliderScreenPresenterProtocol {
     }
     
     func didPressSearchButton(withSearchRadius radius: Int) {
-        let locationData = CurrentLocation(latitude: latitude, longitude: longitude, center: center, radius: CLLocationDistance(radius))
-        checkLocationPermissions { access in
-            if access {
-                router?.initMapView(withLocationData: locationData, fromViewController: view ?? SliderScreenViewController())
-            } else {
-                sendToSettings()
-            }
-        }
-    }
-    
-    func checkLocationPermissions(completion: ((Bool) -> Void)) {
-        let locationAccessStatus = view?.locationManager.authorizationStatus
-        switch locationAccessStatus {
-        case .notDetermined:
-            completion(false)
-        case .restricted, .denied:
-            completion(false)
-        case .authorizedAlways, .authorizedWhenInUse:
-            completion(true)
-        case .none:
-            completion(false)
-        case .some(_):
-            completion(false)
-        }
-    }
-    
-    func sendToSettings() {
-        let alert = UIAlertController(title: V.strLocationAlertTittle, message: V.strRequestLocation, preferredStyle: .alert)
-        let acceptAction = UIAlertAction(title: V.strAcceptAction, style: .default) {_ in
-            guard let settingsDirectory = URL(string: UIApplication.openSettingsURLString) else { return }
-            if UIApplication.shared.canOpenURL(settingsDirectory) {
-                UIApplication.shared.open(settingsDirectory)
-            }
-        }
-        alert.addAction(acceptAction)
-        view?.present(alert, animated: true)
-        
+        self.radius = radius
+        interactor?.checkLocationPermissions(locationManager: view?.locationManager)
     }
 }
 
 
 extension SliderScreenPresenter: SliderScreenInteractorOutProtocol{
-
+    func sendToSettings() {
+        router?.sendToSettings(fromViewController: view)
+    }
+    
+    func didGetLocation() {
+        let locationData = CurrentLocation(latitude: latitude, longitude: longitude, center: center, radius: CLLocationDistance(radius ?? 20))
+        router?.initMapView(withLocationData: locationData, fromViewController: view ?? SliderScreenViewController())
+    }
 }
 
