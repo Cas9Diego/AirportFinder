@@ -9,3 +9,6 @@ Screen 2:
 
 *The minimum version is iOS 17
 **This project was constructed using XCode 15.4
+
+![IMG_3950](https://github.com/user-attachments/assets/6d5750c4-3052-4b66-a474-dc536e24cdfe)
+![IMG_3949](https://github.com/user-attachments/assets/609e6c21-a910-4ca3-b233-97434078a5a0)
