@@ -57,18 +57,6 @@ class AirportsMapViewController: UIViewController, MapViewProtocol, MKMapViewDel
         activityIndicator.hidesWhenStopped = true
         view.addSubview(activityIndicator)
     }
-    
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        currentMapInView = mapView
-        if presenter?.didFinishFetchingPreviousPins ?? true {
-            let mapRegion = mapView.centerCoordinate
-            let latitude = mapRegion.latitude
-            let longitude = mapRegion.longitude
-            let areaOnMap = CurrentLocation(latitude: latitude, longitude: longitude, center: CLLocation(latitude: latitude, longitude: longitude), radius: location?.radius ?? 0)
-                self.presenter?.consultAdditionalAirports(location: areaOnMap)
-        }
-        mapView.userTrackingMode = .none
-    }
 }
 
 // MARK: - Pins personalization
@@ -80,5 +68,20 @@ extension AirportsMapViewController {
         pinView.canShowCallout = true
         pinView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         return pinView
+    }
+}
+
+// MARK: - Mapview Delegate
+extension AirportsMapViewController {
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        currentMapInView = mapView
+        if presenter?.didFinishFetchingPreviousPins ?? true {
+            let mapRegion = mapView.centerCoordinate
+            let latitude = mapRegion.latitude
+            let longitude = mapRegion.longitude
+            let areaOnMap = CurrentLocation(latitude: latitude, longitude: longitude, center: CLLocation(latitude: latitude, longitude: longitude), radius: location?.radius ?? 0)
+                self.presenter?.consultAdditionalAirports(location: areaOnMap)
+        }
+        mapView.userTrackingMode = .none
     }
 }
