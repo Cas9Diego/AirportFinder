@@ -11,13 +11,13 @@ import CoreLocation
 protocol SliderScreenRouterProtocol: AnyObject {
     static func initModule() -> SliderScreenViewProtocol
     func initMapView(withLocationData: CurrentLocation, fromViewController: SliderScreenViewProtocol)
-    func sendToSettings(fromViewController: SliderScreenViewProtocol?) 
-    func showErrorWhileGettingLocation(fromViewController: SliderScreenViewProtocol?)
 }
 
 protocol SliderScreenViewProtocol: UIViewController {
     var presenter: SliderScreenPresenterProtocol? {get set}
     var locationManager: CLLocationManager { get }
+    func sendToSettings()
+    func showErrorWhileGettingLocation()
 }
 
 protocol SliderScreenPresenterProtocol: AnyObject {
@@ -26,7 +26,6 @@ protocol SliderScreenPresenterProtocol: AnyObject {
     var interactor: SliderScreenInteractorInProtocol? {get set}
     func didPressSearchButton(withSearchRadius radius: Int)
     func updateLocationValues(latitude: CLLocationDegrees, longitude: CLLocationDegrees, center: CLLocation?)
-    func showErrorWhileGettingLocation(fromViewController: SliderScreenViewProtocol?)
 }
 
 protocol SliderScreenInteractorInProtocol: AnyObject {
