@@ -29,10 +29,10 @@ class AirportsMapViewController: UIViewController, MapViewProtocol, MKMapViewDel
     }
   
     func setupMap() {
-        DispatchQueue.main.async {
-            if let centerCoordinate = self.location?.center?.coordinate, let radius = self.location?.radius {
+        DispatchQueue.main.async { [weak self] in
+            if let centerCoordinate = self?.location?.center?.coordinate, let radius = self?.location?.radius {
                 let region = MKCoordinateRegion(center: centerCoordinate, latitudinalMeters: CLLocationDistance(radius), longitudinalMeters: CLLocationDistance(radius))
-                self.mapView.setRegion(region, animated: true)
+                self?.mapView.setRegion(region, animated: true)
             }
         }
     }
@@ -46,9 +46,9 @@ class AirportsMapViewController: UIViewController, MapViewProtocol, MKMapViewDel
                 self.didSetPins = true
                 self.setupMap()
             }
-            DispatchQueue.global().asyncAfter(deadline: .now() + 3) {
-                self.didSetPins = true
-                self.presenter?.didFinishFetchingPins()
+            DispatchQueue.global().asyncAfter(deadline: .now() + 3) { [weak self] in
+                self?.didSetPins = true
+                self?.presenter?.didFinishFetchingPins()
             }
     }
     

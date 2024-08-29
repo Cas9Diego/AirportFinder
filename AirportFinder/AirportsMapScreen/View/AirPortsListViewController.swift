@@ -59,8 +59,8 @@ class AirPortsListViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func reloadTable() {
-        DispatchQueue.main.async {
-            if let table = self.tableView {
+        DispatchQueue.main.async { [weak self] in
+            if let table = self?.tableView {
                 table.reloadData()
             }
         }

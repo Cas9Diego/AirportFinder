@@ -30,8 +30,8 @@ class TabBarPresenter: TabBarPresenterProtocol {
     func consultAdditionalAirports(location: CurrentLocation?) {
         if didFinishFetchingPreviousPins {
             didFinishFetchingPreviousPins = false
-            DispatchQueue.main.async {
-                self.interactor?.consultAvailableAirPorts(location: location, isRetry: true)
+            DispatchQueue.main.async { [weak self] in
+                self?.interactor?.consultAvailableAirPorts(location: location, isRetry: true)
             }
         }
     }

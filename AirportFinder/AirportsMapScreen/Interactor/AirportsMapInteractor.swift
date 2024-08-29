@@ -47,14 +47,14 @@ class AirportsMapInteractor: TabBarInteractorInProtocol {
             return}
         do {
           let airPortsArray = try JSONDecoder().decode([TabBarEntity].self, from: data)
-            DispatchQueue.main.async {
-                self.setMapPins(withAirPorts: airPortsArray)
+            DispatchQueue.main.async { [weak self] in
+                self?.setMapPins(withAirPorts: airPortsArray)
             }
         } catch {
             print("ParsingError", error.localizedDescription)
             presenter?.didFinishFetchingAnnotations()
-            DispatchQueue.main.async {
-                self.presenter?.showFailedServiceAlert()
+            DispatchQueue.main.async { [weak self] in
+                self?.presenter?.showFailedServiceAlert()
             }
         }
     }

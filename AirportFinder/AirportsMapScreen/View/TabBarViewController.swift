@@ -28,17 +28,17 @@ class TabBarViewController: UITabBarController, TabBarViewProtocol {
     }
     
     func setAirportsListProperties(withInfo info: [MKPointAnnotation]) {
-        DispatchQueue.main.async {
-            if self.listViewController != nil {
-                self.listViewController?.didfetchData = true
-                self.listViewController?.annotationsInfo = info
-                self.reloadTable()
-            } else if let listViewController = self.viewControllers?[1] as? ListViewProtocol {
-                self.listViewController = listViewController
-                self.listViewController?.didfetchData = true
-                listViewController.presenter = self.presenter
-                self.listViewController?.annotationsInfo = info
-                self.reloadTable()
+        DispatchQueue.main.async { [weak self] in
+            if self?.listViewController != nil {
+                self?.listViewController?.didfetchData = true
+                self?.listViewController?.annotationsInfo = info
+                self?.reloadTable()
+            } else if let listViewController = self?.viewControllers?[1] as? ListViewProtocol {
+                self?.listViewController = listViewController
+                self?.listViewController?.didfetchData = true
+                listViewController.presenter = self?.presenter
+                self?.listViewController?.annotationsInfo = info
+                self?.reloadTable()
             }
         }
     }
@@ -53,13 +53,13 @@ class TabBarViewController: UITabBarController, TabBarViewProtocol {
     }
     
     func showFailedServiceAlert() {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
             let alert = UIAlertController(title: K.strServiceAlertTittle, message: K.strServiceAlertMessage, preferredStyle: .alert)
             let acceptAction = UIAlertAction(title: K.strAcceptAction, style: .default) { [weak self] _ in
                 self?.navigationController?.popViewController(animated: true)
             }
             alert.addAction(acceptAction)
-            self.present(alert, animated: true)
+            self?.present(alert, animated: true)
         }
     }
 }
