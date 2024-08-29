@@ -39,6 +39,13 @@ class SliderScreenRouter: SliderScreenRouterProtocol {
         alert.addAction(acceptAction)
         fromViewController?.present(alert, animated: true)
     }
+    
+    func showErrorWhileGettingLocation(fromViewController: SliderScreenViewProtocol?) {
+        let alert = UIAlertController(title: V.strLocationAlertTittle, message: V.strLocationAlertMessage, preferredStyle: .alert)
+        let acceptAction = UIAlertAction(title: V.strAcceptAction, style: .default)
+        alert.addAction(acceptAction)
+        fromViewController?.present(alert, animated: true)
+    }
 }
 
 

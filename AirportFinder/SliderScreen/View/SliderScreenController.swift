@@ -48,10 +48,7 @@ extension SliderScreenViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
-        let alert = UIAlertController(title: V.strLocationAlertTittle, message: V.strLocationAlertMessage, preferredStyle: .alert)
-        let acceptAction = UIAlertAction(title: V.strAcceptAction, style: .default)
-        alert.addAction(acceptAction)
-        self.present(alert, animated: true)
+        presenter?.showErrorWhileGettingLocation(fromViewController: self)
     }
 }
 

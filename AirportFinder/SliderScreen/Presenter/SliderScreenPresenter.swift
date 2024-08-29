@@ -29,6 +29,10 @@ class SliderScreenPresenter: SliderScreenPresenterProtocol {
         self.radius = radius
         interactor?.checkLocationPermissions(locationManager: view?.locationManager)
     }
+    
+    func showErrorWhileGettingLocation(fromViewController: SliderScreenViewProtocol?) {
+        router?.showErrorWhileGettingLocation(fromViewController: fromViewController)
+    }
 }
 
 
