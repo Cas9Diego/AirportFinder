@@ -81,7 +81,6 @@ extension AirportsMapViewController {
             let longitude = mapRegion.longitude
             let areaOnMap = CurrentLocation(latitude: latitude, longitude: longitude, center: CLLocation(latitude: latitude, longitude: longitude), radius: returnNewRadius(mapView: mapView))
                 self.presenter?.consultAdditionalAirports(location: areaOnMap)
-            print(areaOnMap.radius, "The radius")
         }
         mapView.userTrackingMode = .none
     }
