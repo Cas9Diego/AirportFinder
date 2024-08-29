@@ -42,7 +42,7 @@ protocol TabBarPresenterProtocol: AnyObject {
 
 protocol TabBarInteractorInProtocol: AnyObject {
     var presenter: TabBarInteractorOutProtocol? {get set}
-    func consultAvailableAirPorts(location: CurrentLocation?, isRetry: Bool)
+    func consultAvailableAirPorts(location: CurrentLocation?)
 }
 
 protocol TabBarInteractorOutProtocol: AnyObject {

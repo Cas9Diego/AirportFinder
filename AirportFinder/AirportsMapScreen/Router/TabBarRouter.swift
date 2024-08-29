@@ -21,7 +21,7 @@ class TabBarRouter: TabBarRouterProtocol {
         presenter.interactor = interactor
         interactor.presenter = presenter
         presenter.setMapAreaCoverage(withLocation: currentLocationData)
-        interactor.consultAvailableAirPorts(location: currentLocationData, isRetry: false)
+        interactor.consultAvailableAirPorts(location: currentLocationData)
         
         return initView
     }

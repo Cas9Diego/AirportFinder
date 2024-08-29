@@ -24,14 +24,14 @@ class TabBarPresenter: TabBarPresenterProtocol {
     }
     
     func consultAvailableAirPorts(location: CurrentLocation?) {
-        interactor?.consultAvailableAirPorts(location: location, isRetry: false)
+        interactor?.consultAvailableAirPorts(location: location)
     }
     
     func consultAdditionalAirports(location: CurrentLocation?) {
         if didFinishFetchingPreviousPins {
             didFinishFetchingPreviousPins = false
             DispatchQueue.main.async { [weak self] in
-                self?.interactor?.consultAvailableAirPorts(location: location, isRetry: true)
+                self?.interactor?.consultAvailableAirPorts(location: location)
             }
         }
     }

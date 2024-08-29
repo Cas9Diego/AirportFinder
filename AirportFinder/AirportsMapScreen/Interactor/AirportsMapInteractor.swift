@@ -16,7 +16,7 @@ class AirportsMapInteractor: TabBarInteractorInProtocol {
         "x-rapidapi-host": K.strApiHost
     ]
     
-    func consultAvailableAirPorts(location: CurrentLocation?, isRetry: Bool) {
+    func consultAvailableAirPorts(location: CurrentLocation?) {
         let url = getURLWithCurrentlocation(location)
         guard let url = url else { return }
         var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
